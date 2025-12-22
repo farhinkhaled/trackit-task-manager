@@ -1,0 +1,85 @@
+.notification-table-container{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    padding: 10px;  
+    font-weight: 550;
+    font-size: 14px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+tr{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d7d7d7; 
+}
+
+td{
+    padding: 20px;
+    font-size: 14px;
+}
+
+.notification-heading{
+    text-align: left;
+}
+
+.notification-name{
+    display: flex;
+    align-items: center;
+}
+
+.notification-name img{
+    margin-right: 20px;
+    height: 25px;
+}
+
+.due-tomorrow-icon{
+    filter: invert(74%) sepia(75%) saturate(539%) hue-rotate(321deg) brightness(94%) contrast(89%);
+}
+
+.overdue-icon{
+    filter: invert(53%) sepia(68%) saturate(1375%) hue-rotate(315deg) brightness(93%) contrast(91%);
+}
+
+.notification-title{
+    font-size: 16px;
+}
+
+.priority{
+    text-align: center;
+}
+
+.high,
+.medium,
+.low{
+    padding: 4px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.high{
+    background-color: rgb(243, 187, 180);
+    color: rgb(161, 71, 53);
+}
+
+.medium{
+    background-color: rgb(255, 198, 155);
+    color: rgb(205, 100, 2);
+}
+
+.low{
+    background-color: rgb(175, 223, 182);
+    color: rgb(17, 96, 46);
+}
+

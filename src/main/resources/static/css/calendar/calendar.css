@@ -1,0 +1,59 @@
+.calendar-days-dates{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid gainsboro;
+    border-radius: 8px; */
+}
+
+.days,
+.dates{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 4px;
+    row-gap: 4px;
+}
+
+.days{
+    font-size: 15px;
+    background-color: gainsboro;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.dates{
+    font-weight: 600;
+}
+
+.date-num{
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+}
+
+.day-name{
+    position: relative;
+    padding: 20px;
+}
+
+.day-name .name{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.date-num{
+    position: relative;
+    padding: 60px 30px; 
+}
+
+.date-num .num{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.date-num .num-dim{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: rgb(156, 156, 156);
+}

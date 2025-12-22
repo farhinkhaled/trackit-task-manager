@@ -1,0 +1,77 @@
+.overview{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
+}
+
+.task-title-container{
+    padding: 12px 20px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.task-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.details-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.status-icon{
+    height: 20px;
+}
+
+.deadline-icon,
+.updated-icon,
+.description-icon{
+    margin-left: 1px;
+    height: 16px;
+    filter: invert(17%) sepia(13%) saturate(654%) hue-rotate(187deg) brightness(95%) contrast(87%);
+}
+
+.about-task{
+    margin-left: 8px;
+    font-size: 14px;
+    color: rgb(72, 72, 72);
+}
+
+.task-status,
+.deadline,
+.updated{
+    font-size: 14px;
+}
+
+.task-status{
+    font-weight: 500;
+    color: rgb(19, 120, 208);
+    margin-left: 60px;
+}
+
+.deadline,
+.updated{
+    margin-left: 48px;
+}
+
+.description-icon-container{
+    display: flex;
+}
+
+.description{
+    margin-top: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 25px;
+    width: 520px;
+}

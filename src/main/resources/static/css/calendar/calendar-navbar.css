@@ -1,0 +1,68 @@
+.calendar-nav-bar{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid gainsboro;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.curr-date-time{
+    display: flex;
+    align-items: center;
+    background-color: gainsboro;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.day-txt{
+    margin-right: 30px;
+}
+
+.select-month-year{
+    display: flex;
+    align-items: center;
+}
+
+.left-arrow,
+.right-arrow{
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow{
+    height: 14px;
+    filter: invert(20%) sepia(12%) saturate(605%) hue-rotate(187deg) brightness(88%) contrast(91%);
+}
+
+.left-arrow:hover .arrow,
+.right-arrow:hover .arrow{
+    filter: invert(46%) sepia(11%) saturate(3367%) hue-rotate(171deg) brightness(92%) contrast(94%);
+}
+
+.months-year-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.months-year{
+    font-size: 14px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+
+.calendar-icon{
+    height: 18px;
+    filter: invert(20%) sepia(12%) saturate(605%) hue-rotate(187deg) brightness(88%) contrast(91%);
+}

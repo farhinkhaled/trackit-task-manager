@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="styles/sidebar.css">
+
+        <link rel="stylesheet" href="styles/home-page/current-page-home.css">
+
+        <link rel="stylesheet" href="styles/home-page/cards.css">
+
+        <link rel="stylesheet" href="styles/home-page/stats-home-page.css">
+        <link rel="stylesheet" href="styles/home-page/upcoming-tasks.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <div class="current-page">
+            <h1 class="home-heading">Welcome, Farhin</h1>
+            <span class="current-page-text">Here's an overview of what’s going on in your workspace</span>
+        </div>
+
+        <div class="cards-container">
+            <div class="stats-container">
+                <div class="stats-card">
+                    <div class="task-status">In Progress</div>
+                    <img 
+                        class="dashboard-analytics" 
+                        src="images/dashboard-analytics/doughnut-chart.svg">
+                </div>
+
+                <div class="stats-card">
+                    <div class="task-status">Overdue</div>
+                    <img 
+                        class="dashboard-analytics" 
+                        src="images/dashboard-analytics/doughnut-chart.svg">
+                </div>
+
+                <div class="stats-card">
+                    <div class="task-status">Completed</div>
+                    <img 
+                        class="dashboard-analytics" 
+                        src="images/dashboard-analytics/doughnut-chart.svg">
+                </div>
+            </div>
+
+            <div class="upcoming-tasks-container">
+                <div class="header">Upcoming Tasks</div>
+
+                <div class="upcoming-tasks">
+                    <div class="upcoming-tasks-group">
+                        <div class="task">
+                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <div class="task-details">
+                                <div class="task-title">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                            </div>
+                        </div>
+                        <button class="detail-button">
+                            Detail
+                        </button>
+                    </div>
+
+                    <div class="upcoming-tasks-group">
+                        <div class="task">
+                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <div class="task-details">
+                                <div class="task-title">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                            </div>
+                        </div>
+                        <button class="detail-button">
+                            Detail
+                        </button>
+                    </div>
+
+                    <div class="upcoming-tasks-group">
+                        <div class="task">
+                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <div class="task-details">
+                                <div class="task-title">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                            </div>
+                        </div>
+                        <button class="detail-button">
+                            Detail
+                        </button>
+                    </div>
+                    
+                    <div class="upcoming-tasks-group">
+                        <div class="task">
+                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <div class="task-details">
+                                <div class="task-title">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                            </div>
+                        </div>
+                        <button class="detail-button">
+                            Detail
+                        </button>
+                    </div>
+
+                    <div class="upcoming-tasks-group">
+                        <div class="task">
+                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <div class="task-details">
+                                <div class="task-title">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                </div>
+                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                            </div>
+                        </div>
+                        <button class="detail-button">
+                            Detail
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="view-all-tasks">
+                    View All
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/sidebar.js"></script>
+        <script src="scripts/sort-by-priority-btn.js"></script>
+    </body>
+</html>

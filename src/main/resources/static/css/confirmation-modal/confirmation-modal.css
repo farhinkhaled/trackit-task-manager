@@ -1,0 +1,83 @@
+.confirmation-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    width: 350px;
+    padding: 40px 20px;
+    position: fixed;
+    top: 150px;
+    right: 330px;
+    left: 500px;
+    z-index: 100;
+    display: none;
+}
+
+.modal-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-icon-container{
+    display: flex;
+    align-items: center;
+    background-color: #ffeaed;
+    border-radius: 8px;
+    padding: 6px;
+    margin-bottom: 20px;
+}
+
+.delete-icon{
+    height: 35px;
+    filter: invert(44%) sepia(66%) saturate(5271%) hue-rotate(330deg) brightness(100%) contrast(71%);
+}
+
+.delete-text{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.confirmation-text{
+    font-size: 15px;
+    color: gray;
+    margin-bottom: 30px;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cancle-button,
+.confirm-button{
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 60px;
+    cursor: pointer;
+}
+
+.cancle-button{
+    transition: color 0.15s;
+}
+
+.confirm-button{
+    color: white;
+    background-color: rgb(218, 80, 99);
+    transition: opacity 0.15s;
+}
+
+.cancle-button:hover{
+    color: rgb(218, 80, 99);
+}
+
+.confirm-button:hover{
+    opacity: 0.8;
+}

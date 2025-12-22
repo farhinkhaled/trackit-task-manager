@@ -1,0 +1,132 @@
+.subtasks-card{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
+    padding: 20px;
+}
+
+.subtasks-card .header-section{
+    border-bottom: 1px solid gainsboro;
+}
+
+.subtask-card-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subtask-card-heading .heading{
+    display: flex;
+}
+
+.subtask-card-heading .heading div{
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.subtasks-icon{
+    height: 19px;
+}
+
+.progress{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.completed-subtask-num{
+    align-self: flex-end;
+}
+
+.progress-bar-container{
+    background-color: gainsboro;
+    width: 560px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 14px;
+}
+
+.progress-bar{
+    background-color: rgb(48, 115, 216);
+    width: 200px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.subtasks{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.subtasks-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    /* padding-bottom: 10px;
+    border-bottom: 1px solid gainsboro; */
+}
+
+.subtask-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.subtask-checkbox{
+    appearance: none;
+    padding: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(44, 124, 209);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.subtask-checkbox:checked {
+  background-color: rgb(44, 124, 209);
+}
+
+.subtask-title{
+    margin-left: 20px;
+    color: rgb(72, 72, 72);
+    font-size: 16px;
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+}
+
+.edit-button{
+    margin-right: 10px;
+}
+
+.trash-icon,
+.edit-icon{
+    height: 22px;
+    cursor: pointer;
+    filter: invert(42%) sepia(61%) saturate(1012%) hue-rotate(186deg) brightness(85%) contrast(98%);
+}
+
+.trash-icon:hover,
+.edit-icon:hover{
+    filter: invert(29%) sepia(2%) saturate(7%) hue-rotate(356deg) brightness(100%) contrast(94%);
+}
+
+.add-subtask-button{
+    padding: 10px 6px;
+    background-color: rgb(44, 124, 209);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.add-subtask-button:hover{
+    opacity: 0.8;
+}

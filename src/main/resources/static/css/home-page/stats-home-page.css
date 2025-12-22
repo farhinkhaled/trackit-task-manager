@@ -1,0 +1,27 @@
+.stats-container{
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    column-gap: 14px;
+}
+
+.stats-card{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 20px;
+    /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+
+.dashboard-analytics{
+    height: 100px;
+    filter: invert(49%) sepia(84%) saturate(360%) hue-rotate(169deg) brightness(89%) contrast(93%);
+}
+
+.task-status{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(83, 83, 83);
+}

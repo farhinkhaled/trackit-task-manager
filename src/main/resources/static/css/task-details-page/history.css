@@ -1,0 +1,78 @@
+.history-card{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
+}
+
+.blue-line{
+    background-color: rgb(66, 136, 239);
+    padding: 6px;
+    margin-top: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.history-card-heading{
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.all-history{
+    display: flex;
+    flex-direction: column;
+    height: 555px;
+    padding: 20px;
+}
+
+.history-group{
+    display: flex;
+    margin-bottom: 28px;
+}
+
+.circle-line{
+    position: relative;
+    margin-left: 10px;
+    margin-right: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle{
+    position: absolute;
+    border-radius: 25px;
+    padding: 8px;
+    background-color: gainsboro;
+}
+
+.line{
+    position: absolute;
+    background-color: gainsboro;
+    height: 50px;
+    width: 2px;
+    bottom: -28px;
+}
+
+.history-title{
+    color: rgb(72, 72, 72);
+    font-size: 14px;
+}
+
+.view-all-history{
+    margin-left: 10px;
+    font-size: 14px;
+    color: rgb(36, 61, 219);
+    font-weight: 500;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color text-decoration 0.15s;
+}
+
+.view-all-history:hover{
+    color: #474747;
+    text-decoration: underline;
+}
+

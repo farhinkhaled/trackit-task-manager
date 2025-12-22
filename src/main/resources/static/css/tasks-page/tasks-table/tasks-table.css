@@ -1,0 +1,103 @@
+table{
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;  
+    background-color: #f2f2f2;
+    font-weight: 550;
+    text-align: center;
+    font-size: 14px;
+}
+
+tr{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d7d7d7; 
+}
+
+td{
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.name-text{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color text-decoration 0.15s;
+}
+
+.name-text:hover{
+    color: #4053ce;
+    text-decoration: underline;
+}
+
+.pending-task-image,
+.loading-task-image{
+    height: 20px;
+    margin-right: 5px;
+}
+
+.done-task-image{
+    height: 25px;
+}
+
+.pending,
+.in-progress,
+.completed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.high,
+.medium,
+.low{
+    padding: 3px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.high{
+    background-color: rgb(243, 187, 180);
+    color: rgb(161, 71, 53);
+}
+
+.medium{
+    background-color: rgb(226, 182, 148);
+    color: rgb(139, 78, 17);
+}
+
+.low{
+    background-color: rgb(175, 223, 182);
+    color: rgb(17, 96, 46);
+}
+
+.edit-button,
+.delete-button{
+    font-size: 15px;
+    cursor: pointer;
+    transition: text-decoration 0.15s;
+}
+
+.edit-button{
+    color: #4053ce;
+    margin-right: 8px;
+}
+
+.delete-button{
+    color: #ce4240;
+}
+
+.edit-button:hover,
+.delete-button:hover{
+    text-decoration: underline;
+}
+
+
+

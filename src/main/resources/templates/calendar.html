@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Calendar</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="styles/global.css">
+        <link rel="stylesheet" href="styles/sidebar.css">
+        <link rel="stylesheet" href="styles/current-page.css">
+
+        <link rel="stylesheet" href="styles/calendar/calendar-container.css">
+        <link rel="stylesheet" href="styles/calendar/calendar-navbar.css">
+        <link rel="stylesheet" href="styles/calendar/calendar.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <div class="current-page">
+            <div class="current-page-heading">
+                <span class="task-text">Calendar</span>
+            </div>
+            <span class="current-page-text">Monitor All Tasks Here</span>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-nav-bar">
+                <div class="curr-date-time">
+                    <div class="day-txt">Today</div>
+                    <div class="date-txt">18 Dec 2025</div>
+                </div>
+                <div class="select-month-year">
+                    <div class="arrow-key left-arrow" id="prev">
+                        <img class="arrow" src="images/calendar/left-arrow.svg">
+                    </div>
+                    <div class="months-year-container">
+                        <div class="months-year">Dec 2025</div>
+                        <img 
+                            class="calendar-icon" 
+                            src="images/calendar/calendar.svg">
+                    </div>
+                    <div class="arrow-key right-arrow" id="next">
+                        <img class="arrow" src="images/calendar/right-arrow.svg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-days-dates">
+                <div class="days">
+                    <div class="day-name">
+                        <div class="name">Sun</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Mon</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Tue</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Wed</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Thu</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Fri</div>
+                    </div>
+                    <div class="day-name">
+                        <div class="name">Sat</div>
+                    </div>
+                </div>
+                <div class="dates">
+                    <div class="date-num">
+                        <div class="num">1</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">2</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">3</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">4</div> 
+                    </div>
+                    <div class="date-num">
+                        <div class="num">5</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">6</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">7</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">8</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">9</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">10</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">11</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">12</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">13</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">14</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">15</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">17</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">18</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">19</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">20</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">21</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">22</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">23</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">24</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">25</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">26</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">27</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">28</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">29</div>
+                    </div>
+                    <div class="date-num">
+                        <div class="num">30</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/sidebar.js"></script>
+
+        <script th:inline="javascript">
+            const deadlineCounts = /*[[${deadlineCounts}]]*/ {};
+        </script>
+
+        <script src="scripts/calendar.js"></script>
+    </body>
+</html>

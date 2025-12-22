@@ -1,0 +1,4 @@
+.task-preview{
+    display: flex;
+    flex-direction: column;
+}

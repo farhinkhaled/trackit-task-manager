@@ -1,0 +1,76 @@
+.upcoming-tasks-container{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.header{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.upcoming-tasks{
+    display: flex;
+    flex-direction: column;
+}
+
+.upcoming-tasks-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(188, 188, 188);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+}
+
+.dashed-circle{
+    height: 22px;
+    filter: invert(37%) sepia(89%) saturate(713%) hue-rotate(184deg) brightness(92%) contrast(94%);
+    margin-right: 20px;
+}
+
+.task-title{
+    font-size: 16px;
+    color: rgb(72, 72, 72);
+    margin-bottom: 5px;
+}
+
+.due-date{
+    font-size: 14px;
+    color: rgb(72, 72, 72);
+}
+
+.detail-button{
+    padding: 8px 12px;
+    background-color: rgb(48, 115, 216);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.detail-button:hover{
+    opacity: 0.8;
+}
+
+.view-all-tasks{
+    margin-left: 10px;
+    font-size: 14px;
+    color: rgb(79, 103, 255);
+    font-weight: 600;
+    transition: text-decoration 0.15s;
+    cursor: pointer;
+}
+
+.view-all-tasks:hover{
+    text-decoration: underline;
+}

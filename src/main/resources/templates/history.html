@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>History</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+
+        <link rel="stylesheet" href="/css/search-bar.css">
+        <link rel="stylesheet" href="/css/history-page/history-table.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <div class="search-bar-container">
+            <img class="search-icon" src="/images/notifications/search.svg">
+            <input class="search-bar" placeholder="Search History">
+        </div>
+
+        <div class="history-table-container">
+            <table>
+                <th class="history-heading">History</th>
+                <th class="modified-date">Modified</th>
+
+                <tr th:each="taskHistory: ${taskHistories}">
+                    <td class="history-name">
+                        <img class="circle-tick-icon" src="/images/history/tick-circle.svg">
+                        <div
+                           class="history-title"
+                           th:text="${taskHistory.eventType}"
+                        >
+                        </div>
+                    </td>
+                    <td
+                        class="modified"
+                        th:text="${taskHistory.createdOn}"
+                    >
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <script src="/js/sidebar.js"></script>
+    </body>
+</html>

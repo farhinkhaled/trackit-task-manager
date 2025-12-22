@@ -1,0 +1,103 @@
+.stats-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.stats-card{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 20px;
+    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
+    width: 200px;
+}
+
+.card-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.card-heading p{
+    font-size: 14px;
+    text-wrap: nowrap;
+    color: rgb(46, 46, 46);
+}
+
+.total-tasks-image,
+.pending-image,
+.in-progress-image,
+.completed-image{
+    height: 20px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.total-tasks-image{
+    background-color: rgb(217, 235, 252);
+}
+
+.pending-image{
+    background-color: rgb(255, 202, 202);
+}
+
+.in-progress-image{
+    background-color: #f8e5c3;
+}
+
+.completed-image{
+    background-color: rgb(228, 255, 228);
+}
+
+.stats{
+    display: flex;
+    flex-direction: row;
+}
+
+.task-count{
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.progress-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.style-card-1{
+    color: #4053ce;
+}
+
+.style-card-2{
+    color: #ff5757;
+}
+
+.style-card-3{
+    color: #e09f26;
+}
+
+.style-card-4{
+    color: #3DBA6C;
+}
+
+.upward-arrow{
+    height: 20px;
+}
+
+.progress{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}

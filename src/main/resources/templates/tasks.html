@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tasks</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+
+        <link rel="stylesheet" href="/css/current-page.css">
+
+        <link rel="stylesheet" href="/css/tasks-page/task-preview.css">
+        <link rel="stylesheet" href="/css/tasks-page/stats.css">
+        <link rel="stylesheet" href="/css/tasks-page/tasks-table/task-table-container.css">
+        <link rel="stylesheet" href="/css/tasks-page/tasks-table/task-nav.css">
+        <link rel="stylesheet" href="/css/tasks-page/tasks-table/tasks-table.css">
+        <link rel="stylesheet" href="/css/tasks-page/tasks-table/pagination.css">
+
+        <link rel="stylesheet" href="/css/form/task-form.css">
+        <link rel="stylesheet" href="/css/form/backdrop.css">
+        <link rel="stylesheet" href="/css/confirmation-modal/confirmation-modal.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <div class="current-page">
+            <div class="current-page-heading">
+                <span class="task-text">Tasks</span>
+            </div>
+            <span class="current-page-text">Organize Your Tasks</span>
+        </div>
+
+        <div class="task-preview">
+            <div class="stats-container">
+                <div class="stats-card">
+                    <div class="card-heading">
+                        <p>Total Tasks</p>
+                        <img 
+                            class="total-tasks-image" 
+                            src="/images/stats/task.svg"
+                        >
+                    </div>
+                    <div class="stats">
+                        <p class="task-count">42</p>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="card-heading">
+                        <p>Pending</p>
+                        <img 
+                            class="pending-image" 
+                            src="/images/stats/clock.svg"
+                        >
+                    </div>
+                    <div class="stats">
+                        <p class="task-count">5</p>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="card-heading">
+                        <p>In Progress</p>
+                        <img 
+                            class="in-progress-image" 
+                            src="/images/stats/loading.svg"
+                        >
+                    </div>
+                    <div class="stats">
+                        <p class="task-count">10</p>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="card-heading">
+                        <p>Completed</p>
+                        <img 
+                            class="completed-image" 
+                            src="/images/stats/tick.svg"
+                        >
+                    </div>
+                    <div class="stats">
+                        <p class="task-count">25</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-table-container">
+                <div class="task-nav-bar">
+                    <p class="tasks-table-heading">Task List</p>
+                    <div class="task-actions">
+                        <div class="sort-by">
+                            <input
+                                    name="query"
+                                    class="search-bar"
+                                    type="search"
+                                    placeholder="Search"
+                            >
+                            <button class="filter-button">
+                                <img class="filter-icon" src="/images/tasks-table/filter.svg">
+                                <span>Filter</span>
+                            </button>
+                        </div>
+                        <button id="addTaskBtn" class="add-task-button">
+                            <img class="plus-icon" src="/images/tasks-table/plus-icon.svg">
+                            Add Task
+                        </button>
+                    </div>
+                </div>
+                <table>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Deadline</th>
+                    <th>Actions</th>
+
+                    <tr th:each="task : ${taskPage.content}">
+                        <td class="task-name">
+                            <a th:text="${task.taskTitle}"
+                               th:href="@{/task-detail/{taskId}(taskId=${task.id})}"
+                               class="name-text">
+                            </a>
+                        </td>
+                        <td class="pending">
+                            <img 
+                                class="pending-task-image"
+                            >
+                            <span th:text="${task.taskStatus}">
+                            </span>
+                        </td>
+                        <td>
+                            <span th:text="${task.taskPriority}"
+                                  th:class="${task.taskPriority}">
+                            </span>
+                        </td>
+                        <td th:text="${task.deadline}" class="deadline">
+                        </td>
+                        <td class="actions">
+                            <a
+                                class="edit-button"
+                                th:data-id="${task.id}"
+                                th:data-title="${task.taskTitle}"
+                                th:data-deadline="${task.deadline}"
+                                th:data-priority="${task.taskPriority}"
+                                th:data-description="${task.taskDescription}">
+                                Edit
+                            </a>
+                            <a class="delete-button"
+                               th:data-id="${task.id}">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="pagination">
+
+                    <button
+                            class="nav-button"
+                            th:if="${taskPage.hasPrevious()}"
+                            th:onclick="'window.location.href=\'/task-page?page=' + (${currentPage} - 1) + '&size=' + ${taskPage.size} + '\';'"
+                    >
+                        <img class="arrow" src="/images/tasks-table/left-arrow.svg">
+                    </button>
+
+                    <button
+                            class="page-numbers-button"
+                            th:each="i : ${#numbers.sequence(0, taskPage.totalPages - 1)}"
+                            th:disabled="${i == currentPage}"
+                            th:text="${i + 1}"
+                            th:onclick="'window.location.href=\'/task-page?page=' + ${i} + '&size=' + ${taskPage.size} + '\';'"
+                    >
+                        1
+                    </button>
+
+                    <button
+                            class="nav-button"
+                            th:if="${taskPage.hasNext()}"
+                            th:onclick="'window.location.href=\'/task-page?page=' + (${currentPage} + 1) + '&size=' + ${taskPage.size} + '\';'"
+                    >
+                        <img class="arrow" src="/images/tasks-table/right-arrow.svg">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="backdrop"></div>
+
+        <div id="openForm" class="form-container">
+            <div class="form-first-section">
+                <div class="form-heading-container">
+                    <img class="add-task-icon" src="/images/form/add-task.svg">
+                    <p class="form-heading">Add Task</p>
+                </div>
+                <img class="cross-icon closeForm" src="/images/form/cross.svg">
+            </div>
+            <form
+                    id="createTaskForm"
+                    role="form"
+                    method="post"
+                    class="form"
+                    th:object="${task}"
+                    th:action="@{/create-task}"
+            >
+                <input type="hidden" th:field="*{id}">
+
+                <div class="form-group">
+                    <div class="form-subgroup task-title">
+                        <label for="title">
+                            Title<span class="star">*</span>
+                        </label>
+                        <input
+                                type="text"
+                                name="taskTitle"
+                                id="title"
+                                th:field="*{taskTitle}"
+                        >
+                        <p th:if="${#fields.hasErrors('taskTitle')}"
+                           th:errors="*{taskTitle}"
+                           class="error-message">
+                        </p>
+                    </div>
+
+                    <div class="last-section">
+                        <div class="dropdown-box task-deadline">
+                            <label for="deadline">
+                                Deadline<span class="star">*</span>
+                            </label>
+                            <input
+                                    type="date"
+                                    id="deadline"
+                                    name="deadline"
+                                    th:field="*{deadline}"
+                            >
+                            <p th:if="${#fields.hasErrors('deadline')}"
+                               th:errors="*{deadline}"
+                               class="error-message">
+                            </p>
+                        </div>
+                        
+                        <div class="dropdown-box">
+                            <label for="priority">Priority <span class="star">*</span></label>
+                            <select
+                                    id="priority"
+                                    name="taskPriority"
+                                    th:field="*{taskPriority}"
+                            >
+                                <option value="high">
+                                    High
+                                </option>
+                                <option value="medium">
+                                    Medium
+                                </option>
+                                <option value="low">
+                                    Low
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group task-description">
+                    <label for="description">
+                        Description<span class="star">*</span> 
+                    </label>
+                    <textarea 
+                        class="description-input" 
+                        id="description"
+                        name="taskDescription"
+                        th:field="*{taskDescription}"
+                    >
+                    </textarea>
+                    <p th:if="${#fields.hasErrors('taskDescription')}"
+                       th:errors="*{taskDescription}"
+                       class="error-message">
+                    </p>
+                </div>
+            </form>
+            
+            <div class="button-container">
+                <button
+                        id="createButton"
+                        class="submit-button"
+                        type="submit"
+                        form="createTaskForm"
+                >
+                    Save
+                </button>
+            </div>
+        </div>
+
+        <div id="confirmationModel" class="confirmation-modal">
+            <div class="modal-heading">
+                <div class="delete-icon-container">
+                    <img
+                            class="delete-icon"
+                            src="/images/confirmation-modal/delete.svg">
+                </div>
+                <div class="delete-text">
+                    Delete
+                </div>
+                <div class="confirmation-text">
+                    Are you sure you want to delete this task?
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="cancle-button">
+                    Cancel
+                </button>
+                <button id="confirmDeleteBtn" class="confirm-button">
+                    Confirm
+                </button>
+            </div>
+        </div>
+
+        <script src="/js/sidebar.js"></script>
+        <script src="/js/modal-form.js"></script>
+        <script src="/js/confirmation-modal.js"></script>
+    </body>
+</html>

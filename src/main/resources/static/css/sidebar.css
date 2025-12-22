@@ -1,0 +1,73 @@
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 248px;
+    background-color: gainsboro;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: gainsboro;
+    z-index: 20;
+}
+
+.logo-section{
+    display: flex;
+    align-items: center;
+    height: 70px;
+}
+
+.logo{
+    height: 28px;
+    width: 110px;
+    margin-left: 20px;
+}
+
+.sidebar-navs{
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.sidebar-icons{
+    height: 20px;
+    margin-left: 20px;
+    margin-right: 12px;
+}
+
+.sidebar-options{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.mod-user-info{
+    margin-bottom: 20px;
+}
+
+.profile-picture{
+    height: 40px;
+    width: 42px;
+    margin-left: 10px;
+    margin-right: 12px;
+    border: none;
+    border-radius: 25px;
+}
+
+.user-navs{
+    display: flex;
+    align-items: center;
+}
+
+.three-dots-icon{
+    height: 20px;
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+
+
+

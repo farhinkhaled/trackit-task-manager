@@ -1,0 +1,118 @@
+.form-container{
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    width: 550px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 35px;
+    right: 330px;
+    left: 400px;
+    display: none;
+    z-index: 100;
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+
+.form-first-section{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.form-heading-container{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.add-task-icon{
+    height: 24px;
+    margin-right: 8px;
+}
+
+.form-heading{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-subgroup{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+}
+
+.last-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title label{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.task-title input{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    max-width: 450px;
+}
+
+.task-title input{
+    padding: 10px;
+}
+
+.cross-icon{
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    height: 20px;
+    cursor: pointer;
+}
+
+.cross-icon:hover{
+    filter: invert(68%) sepia(5%) saturate(3886%) hue-rotate(185deg) brightness(96%) contrast(99%);
+}
+
+.star{
+    color: red;
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+.submit-button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(103, 103, 182);
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.submit-button:hover{
+    opacity: 0.8;
+}
+
+
+
+
