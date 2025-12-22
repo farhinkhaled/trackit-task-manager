@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>All Upcoming Tasks</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+
+        <link rel="stylesheet" href="/css/current-page.css">
+
+        <link rel="stylesheet" href="/css/tasks-by-deadline/tasks-card-by-deadline.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <h1 class="upcoming-tasks-heading">All Upcoming Tasks</h1>
+
+        <div class="task-card" th:each="task: ${listUpcomingTasks}">
+            <div class="task-title-container">
+                <div class="blue-side-line"></div>
+                <div class="task-title" th:text="${task.taskTitle}">
+                </div>
+            </div>
+            <div class="task-meta">
+                <div class="task-priority task-meta-items">
+                    <img
+                            th:class="'priority-icon-'+${task.taskPriority}"
+                            src="/images/tasks-by-deadline/priority.svg"
+                    >
+                    <div th:class="'priority-text-'+${task.taskStatus}" th:text="${task.taskPriority}">
+                    </div>
+                </div>
+                <div class="task-status task-meta-items">
+                    <img
+                            class="status-icon-in-progress"
+                            src="/images/tasks-by-deadline/in-progress.svg"
+                    >
+                    <div class="status-text-in-progress">
+                        In Progress
+                    </div>
+                </div>
+                <div class="deadline task-meta-items">
+                    <img class="calendar-icon" src="/images/calendar/calendar.svg">
+                    <div th:text="${task.deadline}">
+                    </div>
+                </div>
+                <a class="about-task" th:href="@{/task-detail/${task.id}}">
+                    <img
+                            class="about-task-icon"
+                            src="/images/tasks-by-deadline/about-task.svg">
+                </a>
+            </div>
+        </div>
+
+        <script src="/js/sidebar.js"></script>
+    </body>
+</html>
