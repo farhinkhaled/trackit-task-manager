@@ -54,32 +54,14 @@ td{
     font-size: 16px;
 }
 
-.priority{
-    text-align: center;
+.about-task{
+    height: 20px;
+    filter: invert(42%) sepia(61%) saturate(1012%) hue-rotate(186deg) brightness(85%) contrast(98%);
+    cursor: pointer;
+    transition: filter 0.15s;
 }
 
-.high,
-.medium,
-.low{
-    padding: 4px 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.high{
-    background-color: rgb(243, 187, 180);
-    color: rgb(161, 71, 53);
-}
-
-.medium{
-    background-color: rgb(255, 198, 155);
-    color: rgb(205, 100, 2);
-}
-
-.low{
-    background-color: rgb(175, 223, 182);
-    color: rgb(17, 96, 46);
+.about-task:hover{
+    filter: invert(29%) sepia(2%) saturate(7%) hue-rotate(356deg) brightness(100%) contrast(94%);
 }
 

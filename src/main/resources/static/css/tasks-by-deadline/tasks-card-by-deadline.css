@@ -1,0 +1,132 @@
+.task-card{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.task-title-container{
+    display: flex;
+}
+
+.blue-side-line{
+    padding: 5px;
+    background-color: rgb(82, 82, 233);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.task-title{
+    padding: 20px;
+    font-size: 16px;
+}
+
+.task-meta{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.task-meta-items{
+    margin-right: 20px;
+}
+
+.task-status,
+.task-priority{
+    display: flex;
+    align-items: center;
+}
+
+.priority-icon-low{
+    height: 15px;
+    margin-right: 5px;
+    filter: invert(64%) sepia(21%) saturate(833%) hue-rotate(60deg) brightness(102%) contrast(101%);
+}
+
+.priority-icon-medium{
+    height: 15px;
+    margin-right: 5px;
+    filter: invert(80%) sepia(67%) saturate(4904%) hue-rotate(357deg) brightness(98%) contrast(98%);
+}
+
+.priority-icon-high{
+    height: 15px;
+    margin-right: 5px;
+    filter: invert(43%) sepia(50%) saturate(4329%) hue-rotate(337deg) brightness(97%) contrast(82%);
+}
+
+.status-icon-in-progress{
+    height: 18px;
+    margin-right: 5px;
+    filter: invert(15%) sepia(62%) saturate(5445%) hue-rotate(239deg) brightness(95%) contrast(84%);
+}
+
+.status-icon-overdue{
+    height: 20px;
+    margin-right: 5px;
+    filter: invert(40%) sepia(67%) saturate(873%) hue-rotate(321deg) brightness(93%) contrast(93%);
+}
+
+.status-icon-complete{
+    height: 16px;
+    margin-right: 5px;
+    filter: invert(47%) sepia(56%) saturate(430%) hue-rotate(95deg) brightness(101%) contrast(94%);
+}
+
+.task-priority,
+.task-status{
+    font-size: 14px;
+}
+
+.priority-text-high{
+    color: rgb(227, 74, 74);
+}
+
+.priority-text-medium{
+    color: rgb(246, 155, 9);
+}
+
+.priority-text-low{
+    color: rgb(56, 161, 105);
+}
+
+.status-text-in-progress{
+    color: rgb(54, 54, 207);
+}
+
+.status-text-overdue{
+    color: rgb(227, 74, 74);
+}
+
+.status-text-complete{
+    color: rgb(56, 161, 105);
+}
+
+.deadline{
+    display: flex;
+    align-items: center;
+}
+
+.calendar-icon{
+    height: 18px;
+    margin-right: 5px;
+    filter: invert(17%) sepia(13%) saturate(654%) hue-rotate(187deg) brightness(95%) contrast(87%);
+}
+
+.deadline div{
+    font-size: 14px;
+    color: gray;
+}
+
+.about-task img{
+    height: 20px;
+    filter: invert(42%) sepia(61%) saturate(1012%) hue-rotate(186deg) brightness(85%) contrast(98%);
+    cursor: pointer;
+    transition: filter 0.15s;
+}
+
+.about-task:hover{
+    filter: invert(29%) sepia(2%) saturate(7%) hue-rotate(356deg) brightness(100%) contrast(94%);
+}

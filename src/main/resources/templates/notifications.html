@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <title>Notifications</title>
 
@@ -7,12 +7,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="styles/global.css">
-        <link rel="stylesheet" href="styles/sidebar.css">
-        <link rel="stylesheet" href="styles/current-page.css">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/current-page.css">
 
-        <link rel="stylesheet" href="styles/search-bar.css">
-        <link rel="stylesheet" href="styles/notifications-page/notification-table.css">
+        <link rel="stylesheet" href="/css/search-bar.css">
+        <link rel="stylesheet" href="/css/notifications-page/no-notification.css">
+        <link rel="stylesheet" href="/css/notifications-page/notification-table.css">
     </head>
     <body>
         <div class="sidebar"></div>
@@ -21,63 +22,44 @@
             <div class="current-page-heading">
                 <span class="task-text">Notifications</span>
             </div>
-            <span class="current-page-text">Stay updated with your latest activities</span>
+            <span class="current-page-text">Stay updated with your tasks</span>
         </div>
 
-        <div class="search-bar-container">
-            <img class="search-icon" src="images/notifications/search.svg">
+        <div th:if="${noNotification == true}" class="no-notification-show">
+            <img class="no-notification-img" src="/images/notifications/no-notification.png">
+            <div class="no-notification-message">No due tasks tomorrow</div>
+        </div>
+
+        <div th:if="${noNotification == false}" class="search-bar-container">
+            <img class="search-icon" src="/images/notifications/search.svg">
             <input class="search-bar" placeholder="Search Notification">
         </div>
 
-        <div class="notification-table-container">
+        <div th:if="${noNotification == false}" class="notification-table-container">
             <table>
                 <th class="notification-heading">Notification</th>
-                <th>Priority</th>
+                <th></th>
 
-                <tr>
+                <tr th:each="notification: ${notifications}">
                     <td class="notification-name">
-                        <img class="due-tomorrow-icon" src="images/notifications/alarm.svg">
-                        <div class="notification-title">
-                            Create a Presentation Slide
+                        <div
+                                class="notification-title"
+                                th:text="${notification.notificationMessage}"
+                        >
                         </div>
                     </td>
-                    <td class="priority">
-                        <span class="medium">
-                            Medium
-                        </span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="notification-name">
-                        <img class="overdue-icon" src="images/notifications/urgent.svg">
-                        <div class="notification-title">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                        </div>
-                    </td>
-                    <td class="priority">
-                        <span class="low">
-                            Low
-                        </span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="notification-name">
-                        <img class="overdue-icon" src="images/notifications/urgent.svg">
-                        <div class="notification-title">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                        </div>
-                    </td>
-                    <td class="priority">
-                        <span class="high">
-                            High
-                        </span>
+                    <td>
+                        <a th:href="@{'task-detail/'+${notification.taskId}}">
+                            <img
+                                    class="about-task"
+                                    src="/images/notifications/about-task.svg"
+                            >
+                        </a>
                     </td>
                 </tr>
             </table>
         </div>
         
-        <script src="scripts/sidebar.js"></script>
+        <script src="/js/sidebar.js"></script>
     </body>
 </html>

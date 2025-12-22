@@ -111,6 +111,7 @@
                     </div>
                 </div>
                 <table>
+                    <th></th>
                     <th>Title</th>
                     <th>Status</th>
                     <th>Priority</th>
@@ -118,6 +119,9 @@
                     <th>Actions</th>
 
                     <tr th:each="task : ${taskPage.content}">
+                        <td>
+                            <input type="checkbox">
+                        </td>
                         <td class="task-name">
                             <a th:text="${task.taskTitle}"
                                th:href="@{/task-detail/{taskId}(taskId=${task.id})}"

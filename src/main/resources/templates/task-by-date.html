@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tasks By Deadline</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+
+        <link rel="stylesheet" href="/css/current-page.css">
+
+        <link rel="stylesheet" href="/css/tasks-by-deadline/tasks-card-by-deadline.css">
+    </head>
+    <body>
+        <div class="sidebar"></div>
+
+        <h1 th:text="${#temporals.format(deadline, 'dd MMM yyyy')}">
+        </h1>
+
+        <div class="task-card" th:each="task: ${tasks}">
+            <div class="task-title-container">
+                <div class="blue-side-line"></div>
+                <div class="task-title" th:text="${task.taskTitle}">
+                </div>
+            </div>
+            <div class="task-meta">
+                <div class="task-priority task-meta-items">
+                    <img
+                            th:class="'priority-icon-'+${task.taskPriority}"
+                            src="/images/tasks-by-deadline/priority.svg"
+                    >
+                    <div
+                            th:class="'priority-text-'+${task.taskPriority}"
+                            th:text="${task.taskPriority}"
+                    >
+                    </div>
+                </div>
+<!--                <div class="task-status task-meta-items">-->
+<!--                    <img-->
+<!--                            class="status-icon-in-progress"-->
+<!--                            th:src="'/images/tasks-by-deadline/'+${task.taskStatus}+'.svg'"-->
+<!--                    >-->
+<!--                    <div-->
+<!--                            th:class="'status-text-'+${task.taskStatus}"-->
+<!--                            th:text="${task.taskStatus}"-->
+<!--                    >-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="deadline task-meta-items">
+                    <img class="calendar-icon" src="/images/calendar/calendar.svg">
+                    <div th:text="${#temporals.format(task.deadline, 'dd MMM yyyy')}">
+                    </div>
+                </div>
+                <a class="about-task" th:href="@{/task-detail/{taskId}(taskId=${task.id})}">
+                    <img
+                            class="about-task-icon"
+                            src="/images/tasks-by-deadline/about-task.svg">
+                </a>
+            </div>
+        </div>
+        
+        <script src="/js/sidebar.js"></script>
+    </body>
+</html>

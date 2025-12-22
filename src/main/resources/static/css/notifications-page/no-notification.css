@@ -1,0 +1,16 @@
+.no-notification-show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.no-notification-img{
+    height: 300px;
+    width: 400px;
+}
+
+.no-notification-message{
+    font-size: 16px;
+    color: gray;
+}
