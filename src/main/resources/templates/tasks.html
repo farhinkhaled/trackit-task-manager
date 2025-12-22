@@ -44,20 +44,22 @@
                         >
                     </div>
                     <div class="stats">
-                        <p class="task-count">42</p>
+                        <p class="task-count" th:text="${totalTasks}">
+                        </p>
                     </div>
                 </div>
 
                 <div class="stats-card">
                     <div class="card-heading">
-                        <p>Pending</p>
+                        <p>Overdue</p>
                         <img 
                             class="pending-image" 
                             src="/images/stats/clock.svg"
                         >
                     </div>
                     <div class="stats">
-                        <p class="task-count">5</p>
+                        <p class="task-count" th:text="${overdueTasks}">
+                        </p>
                     </div>
                 </div>
 
@@ -70,7 +72,8 @@
                         >
                     </div>
                     <div class="stats">
-                        <p class="task-count">10</p>
+                        <p class="task-count" th:text="${inProgressTasks}">
+                        </p>
                     </div>
                 </div>
 
@@ -83,7 +86,8 @@
                         >
                     </div>
                     <div class="stats">
-                        <p class="task-count">25</p>
+                        <p class="task-count" th:text="${completedTasks}">
+                        </p>
                     </div>
                 </div>
             </div>
@@ -120,7 +124,12 @@
 
                     <tr th:each="task : ${taskPage.content}">
                         <td>
-                            <input type="checkbox">
+                            <form th:action="@{/task/complete}" method="post">
+                                <input type="hidden" name="taskId" th:value="${task.id}" />
+                                <input class="style-checkbox" type="checkbox"
+                                       th:checked="${task.taskStatus == 'COMPLETED'}"
+                                       th:attr="onclick='this.disabled=true; this.form.submit()'" />
+                            </form>
                         </td>
                         <td class="task-name">
                             <a th:text="${task.taskTitle}"

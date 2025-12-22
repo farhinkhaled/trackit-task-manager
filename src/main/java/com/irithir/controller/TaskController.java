@@ -38,10 +38,19 @@ public class TaskController {
         Page<Task> taskPage = taskService.getTasks(page, size);
         Task task = new Task();
 
+        long totalTasks = tasks.size();
+        long inProgressTasks = taskService.countTasksByStatus("IN_PROGRESS");
+        long overdueTasks = taskService.countTasksByStatus("OVERDUE");
+        long completedTasks = taskService.countTasksByStatus("COMPLETED");
+
         modelAndView.addObject("tasks", tasks);
         modelAndView.addObject("task", task);
         modelAndView.addObject("taskPage", taskPage);
         modelAndView.addObject("currentPage", page);
+        modelAndView.addObject("totalTasks", totalTasks);
+        modelAndView.addObject("inProgressTasks", inProgressTasks);
+        modelAndView.addObject("overdueTasks", overdueTasks);
+        modelAndView.addObject("completedTasks", completedTasks);
 
         modelAndView.setViewName("tasks.html");
         return modelAndView;
@@ -124,10 +133,26 @@ public class TaskController {
         SubTask subTask = subTaskService.findSubTaskById(subTaskId);
         Long taskId = subTask.getTask().getId();
 
-        System.out.println(taskId);
-
         subTaskService.deleteSubTask(subTaskId);
         modelAndView.setViewName("redirect:/task-detail/" +taskId);
         return modelAndView;
+    }
+
+    @GetMapping("/home")
+    public ModelAndView homePage(ModelAndView modelAndView){
+        List<TaskDto> upcomingTasks = taskService.upcomingTasks();
+
+        modelAndView.addObject("upcomingTasks", upcomingTasks);
+        modelAndView.setViewName("home.html");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/task/complete")
+    public ModelAndView completeTask(@RequestParam Long taskId,
+                                     ModelAndView modelAndView) {
+        taskService.markTaskAsComplete(taskId);
+        modelAndView.setViewName("redirect:/task-page");
+        return modelAndView; // back to your task page
     }
 }

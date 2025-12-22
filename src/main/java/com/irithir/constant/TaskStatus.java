@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TaskStatus {
     public static final String IN_PROGRESS = "IN_PROGRESS";
-    public static final String COMPLETE = "COMPLETE";
+    public static final String COMPLETED = "COMPLETED";
     public static final String OVERDUE = "OVERDUE";
 }

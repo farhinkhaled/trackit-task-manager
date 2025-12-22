@@ -14,4 +14,8 @@ public interface TaskService {
     void updateTask(TaskDto taskDto);
     void deleteTask(Long taskId);
     List<TaskDto> searchTasks(String query);
+    List<TaskDto> upcomingTasks();
+    void markTaskAsComplete(Long taskId);
+
+    long countTasksByStatus(String status);
 }

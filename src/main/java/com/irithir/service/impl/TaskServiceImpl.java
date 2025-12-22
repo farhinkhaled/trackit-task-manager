@@ -24,7 +24,6 @@ import static com.irithir.mapper.TaskMapper.mapToTaskDto;
 
 @Service
 @EnableScheduling
-@Transactional
 public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
     private TaskHistoryRepository taskHistoryRepository;
@@ -44,7 +43,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void saveTask(TaskDto taskDto) {
         Task task = mapToTask(taskDto);
-        task.setTaskStatus("in-progress");
+        task.setTaskStatus("IN_PROGRESS");
 
         TaskHistory taskHistory = TaskHistory.builder()
                 .eventType("New Task " +task.getTaskTitle()+ " was created on ")
@@ -85,7 +84,29 @@ public class TaskServiceImpl implements TaskService {
         return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
     }
 
+    @Override
+    public List<TaskDto> upcomingTasks() {
+        LocalDate startDate = LocalDate.now().plusDays(1);
+        LocalDate endDate = LocalDate.now().plusDays(10);
+
+        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate);
+        return upcomingTasks.stream().map((upcomingTask) -> mapToTaskDto(upcomingTask)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void markTaskAsComplete(Long taskId) {
+        Task task = taskRepository.findById(taskId).get();
+        task.setTaskStatus("COMPLETED");
+        taskRepository.save(task);
+    }
+
+    @Override
+    public long countTasksByStatus(String status) {
+        return taskRepository.countByTaskStatus(status);
+    }
+
     @Scheduled(cron = "0 5 0 * * ?")
+    @Transactional
     public void updateOverdueTasks() {
         List<String> activeStatuses = List.of(
                 TaskStatus.IN_PROGRESS

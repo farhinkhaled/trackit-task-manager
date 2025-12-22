@@ -21,7 +21,8 @@ public class TaskNotificationServiceImpl implements TaskNotificationService {
     @Override
     public List<TaskNotification> findAllNotifications() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
-        List<Task> dueTomorrowTasks = taskRepository.findDueTomorrowTasks(tomorrow);
+        String status = "IN_PROGRESS";
+        List<Task> dueTomorrowTasks = taskRepository.findDueTomorrowTasks(tomorrow, status);
 
         return dueTomorrowTasks.stream()
                 .map(task -> TaskNotification.builder()

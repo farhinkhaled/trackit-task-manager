@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <title>Home</title>
         
@@ -7,15 +7,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="styles/global.css">
-        <link rel="stylesheet" href="styles/sidebar.css">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
 
-        <link rel="stylesheet" href="styles/home-page/current-page-home.css">
+        <link rel="stylesheet" href="/css/home-page/current-page-home.css">
 
-        <link rel="stylesheet" href="styles/home-page/cards.css">
+        <link rel="stylesheet" href="/css/home-page/cards.css">
 
-        <link rel="stylesheet" href="styles/home-page/stats-home-page.css">
-        <link rel="stylesheet" href="styles/home-page/upcoming-tasks.css">
+        <link rel="stylesheet" href="/css/home-page/stats-home-page.css">
+        <link rel="stylesheet" href="/css/home-page/upcoming-tasks.css">
     </head>
     <body>
         <div class="sidebar"></div>
@@ -31,21 +31,21 @@
                     <div class="task-status">In Progress</div>
                     <img 
                         class="dashboard-analytics" 
-                        src="images/dashboard-analytics/doughnut-chart.svg">
+                        src="/images/dashboard-analytics/doughnut-chart.svg">
                 </div>
 
                 <div class="stats-card">
                     <div class="task-status">Overdue</div>
                     <img 
                         class="dashboard-analytics" 
-                        src="images/dashboard-analytics/doughnut-chart.svg">
+                        src="/images/dashboard-analytics/doughnut-chart.svg">
                 </div>
 
                 <div class="stats-card">
                     <div class="task-status">Completed</div>
                     <img 
                         class="dashboard-analytics" 
-                        src="images/dashboard-analytics/doughnut-chart.svg">
+                        src="/images/dashboard-analytics/doughnut-chart.svg">
                 </div>
             </div>
 
@@ -53,90 +53,28 @@
                 <div class="header">Upcoming Tasks</div>
 
                 <div class="upcoming-tasks">
-                    <div class="upcoming-tasks-group">
+                    <div
+                            th:each="task: ${upcomingTasks}"
+                            class="upcoming-tasks-group"
+                    >
                         <div class="task">
-                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
+                            <img class="dashed-circle" src="/images/side-upcoming-tasks/circle-dashed.svg">
                             <div class="task-details">
-                                <div class="task-title">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                <div class="task-title" th:text="${task.taskTitle}">
                                 </div>
-                                <div class="due-date">Due Date: 24 Dec 2025</div>
+                                <div class="due-date" th:text="${task.deadline}">
+                                </div>
                             </div>
                         </div>
-                        <button class="detail-button">
+                        <button class="detail-button" th:onclick="'location.href=\'/task-detail/' + ${task.id} + '\';'">
                             Detail
                         </button>
                     </div>
-
-                    <div class="upcoming-tasks-group">
-                        <div class="task">
-                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
-                            <div class="task-details">
-                                <div class="task-title">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </div>
-                                <div class="due-date">Due Date: 24 Dec 2025</div>
-                            </div>
-                        </div>
-                        <button class="detail-button">
-                            Detail
-                        </button>
-                    </div>
-
-                    <div class="upcoming-tasks-group">
-                        <div class="task">
-                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
-                            <div class="task-details">
-                                <div class="task-title">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </div>
-                                <div class="due-date">Due Date: 24 Dec 2025</div>
-                            </div>
-                        </div>
-                        <button class="detail-button">
-                            Detail
-                        </button>
-                    </div>
-                    
-                    <div class="upcoming-tasks-group">
-                        <div class="task">
-                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
-                            <div class="task-details">
-                                <div class="task-title">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </div>
-                                <div class="due-date">Due Date: 24 Dec 2025</div>
-                            </div>
-                        </div>
-                        <button class="detail-button">
-                            Detail
-                        </button>
-                    </div>
-
-                    <div class="upcoming-tasks-group">
-                        <div class="task">
-                            <img class="dashed-circle" src="images/side-upcoming-tasks/circle-dashed.svg">
-                            <div class="task-details">
-                                <div class="task-title">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </div>
-                                <div class="due-date">Due Date: 24 Dec 2025</div>
-                            </div>
-                        </div>
-                        <button class="detail-button">
-                            Detail
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="view-all-tasks">
-                    View All
                 </div>
             </div>
         </div>
 
-        <script src="scripts/sidebar.js"></script>
-        <script src="scripts/sort-by-priority-btn.js"></script>
+        <script src="/js/sidebar.js"></script>
+        <script src="/js/sort-by-priority-btn.js"></script>
     </body>
 </html>
