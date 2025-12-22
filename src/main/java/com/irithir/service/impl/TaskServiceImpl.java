@@ -89,7 +89,11 @@ public class TaskServiceImpl implements TaskService {
         LocalDate startDate = LocalDate.now().plusDays(1);
         LocalDate endDate = LocalDate.now().plusDays(10);
 
-        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate);
+        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate)
+                                    .stream()
+                                    .limit(5)
+                                    .collect(Collectors.toList());
+
         return upcomingTasks.stream().map((upcomingTask) -> mapToTaskDto(upcomingTask)).collect(Collectors.toList());
     }
 
@@ -103,6 +107,16 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public long countTasksByStatus(String status) {
         return taskRepository.countByTaskStatus(status);
+    }
+
+    @Override
+    public List<TaskDto> allUpcomingTasks() {
+        LocalDate startDate = LocalDate.now().plusDays(1);
+        LocalDate endDate = LocalDate.now().plusDays(10);
+
+        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate);
+
+        return upcomingTasks.stream().map((upcomingTask) -> mapToTaskDto(upcomingTask)).collect(Collectors.toList());
     }
 
     @Scheduled(cron = "0 5 0 * * ?")

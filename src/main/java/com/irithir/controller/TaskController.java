@@ -142,8 +142,27 @@ public class TaskController {
     public ModelAndView homePage(ModelAndView modelAndView){
         List<TaskDto> upcomingTasks = taskService.upcomingTasks();
 
+        long totalTasks = taskService.findAllTasks().size();
+        long inProgressTasks = taskService.countTasksByStatus("IN_PROGRESS");
+        long overdueTasks = taskService.countTasksByStatus("OVERDUE");
+        long completedTasks = taskService.countTasksByStatus("COMPLETED");
+
         modelAndView.addObject("upcomingTasks", upcomingTasks);
+        modelAndView.addObject("inProgressTasks", inProgressTasks);
+        modelAndView.addObject("overdueTasks", overdueTasks);
+        modelAndView.addObject("completedTasks", completedTasks);
+
         modelAndView.setViewName("home.html");
+
+        return modelAndView;
+    }
+
+    @GetMapping("/upcoming-tasks")
+    public ModelAndView upcomingTasks(ModelAndView modelAndView){
+        List<TaskDto> listUpcomingTasks = taskService.allUpcomingTasks();
+
+        modelAndView.addObject("listUpcomingTasks", listUpcomingTasks);
+        modelAndView.setViewName("all-upcoming-tasks.html");
 
         return modelAndView;
     }

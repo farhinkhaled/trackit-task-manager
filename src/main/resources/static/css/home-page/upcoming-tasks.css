@@ -67,6 +67,7 @@
     font-size: 14px;
     color: rgb(79, 103, 255);
     font-weight: 600;
+    text-decoration: none;
     transition: text-decoration 0.15s;
     cursor: pointer;
 }
