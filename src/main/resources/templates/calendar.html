@@ -7,13 +7,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="styles/global.css">
-        <link rel="stylesheet" href="styles/sidebar.css">
-        <link rel="stylesheet" href="styles/current-page.css">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/current-page.css">
 
-        <link rel="stylesheet" href="styles/calendar/calendar-container.css">
-        <link rel="stylesheet" href="styles/calendar/calendar-navbar.css">
-        <link rel="stylesheet" href="styles/calendar/calendar.css">
+        <link rel="stylesheet" href="/css/calendar/calendar-container.css">
+        <link rel="stylesheet" href="/css/calendar/calendar-navbar.css">
+        <link rel="stylesheet" href="/css/calendar/calendar.css">
     </head>
     <body>
         <div class="sidebar"></div>
@@ -33,16 +33,16 @@
                 </div>
                 <div class="select-month-year">
                     <div class="arrow-key left-arrow" id="prev">
-                        <img class="arrow" src="images/calendar/left-arrow.svg">
+                        <img class="arrow" src="/images/calendar/left-arrow.svg">
                     </div>
                     <div class="months-year-container">
                         <div class="months-year">Dec 2025</div>
                         <img 
                             class="calendar-icon" 
-                            src="images/calendar/calendar.svg">
+                            src="/images/calendar/calendar.svg">
                     </div>
                     <div class="arrow-key right-arrow" id="next">
-                        <img class="arrow" src="images/calendar/right-arrow.svg">
+                        <img class="arrow" src="/images/calendar/right-arrow.svg">
                     </div>
                 </div>
             </div>
@@ -163,12 +163,14 @@
             </div>
         </div>
 
-        <script src="scripts/sidebar.js"></script>
+        <script src="/js/sidebar.js"></script>
 
         <script th:inline="javascript">
             const deadlineCounts = /*[[${deadlineCounts}]]*/ {};
+            const CALENDAR_MONTH = /*[[${month}]]*/ 1;
+            const CALENDAR_YEAR = /*[[${year}]]*/ 2025;
         </script>
 
-        <script src="scripts/calendar.js"></script>
+        <script src="/js/calendar.js"></script>
     </body>
 </html>

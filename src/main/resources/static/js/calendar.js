@@ -29,78 +29,114 @@ let dmObj = {
   ],
 };
 
-// date object
 let dateObj = new Date();
-let dayName = dmObj.days[dateObj.getDay()]; // day
-let month = dateObj.getMonth(); // month
-let year = dateObj.getFullYear(); // year
-let date = dateObj.getDate(); // dates;
+let dayName = dmObj.days[dateObj.getDay()];
 
-// today date
+let month = CALENDAR_MONTH - 1;
+let year = CALENDAR_YEAR;
+let date = dateObj.getDate();
+
 datetxtEl.innerHTML = `${date} ${dmObj.months[month]} ${year}`;
 
+console.log(deadlineCounts)
+
 const displayCalendar = () => {
-  let firtDayOfMonth = new Date(year, month, 1).getDay(); // first day of the month
-  let lastDateofMonth = new Date(year, month + 1, 0).getDate(); // last date of the month
-  let lastDayofMonth = new Date(year, month, lastDateofMonth).getDay(); // last day of month
-  let lastDateofLastMonth = new Date(year, month, 0).getDate(); // last date of previous month
-  let days = "";
-  // previous month last days
-  for (let i = firtDayOfMonth; i > 0; i--) {
-    days += 
-        `
-        <div class="date-num">
-            <div class="num-dim">${lastDateofLastMonth - i + 1}</div>
-        </div>`;
-  }
-  for (let i = 1; i <= lastDateofMonth; i++) {
-    let checkToday =
-      i === dateObj.getDate() &&
-      month === new Date().getMonth() &&
-      year === new Date().getFullYear()
-        ? "active"
-        : "";
-    days += 
-        `
-        <div class="${checkToday} date-num">
-            <div class="num">${i}</div>
-        </div>`;
-  }
-  //next month first days
-  for (let i = lastDayofMonth; i < 6; i++) {
-    days += `
+    let firtDayOfMonth = new Date(year, month, 1).getDay(); // first day of the month
+    let lastDateofMonth = new Date(year, month + 1, 0).getDate(); // last date of the month
+    let lastDayofMonth = new Date(year, month, lastDateofMonth).getDay(); // last day of month
+    let lastDateofLastMonth = new Date(year, month, 0).getDate(); // last date of previous month
+    let days = "";
+
+    for (let i = firtDayOfMonth; i > 0; i--) {
+        days +=
+            `
+            <div class="date-num">
+                <div class="num-dim">${lastDateofLastMonth - i + 1}</div>
+            </div>`;
+    }
+
+    for (let i = 1; i <= lastDateofMonth; i++) {
+        let checkToday =
+        i === dateObj.getDate() &&
+        month === new Date().getMonth() &&
+        year === new Date().getFullYear()
+            ? "active"
+            : "";
+
+        let monthStr = String(month + 1).padStart(2, "0");
+        let dayStr = String(i).padStart(2, "0");
+        let dateKey = `${year}-${monthStr}-${dayStr}`;
+        let taskCount = deadlineCounts[dateKey];
+
+        let taskCountHtml = "";
+
+        if (taskCount) {
+            if(taskCount == 1){
+                taskCountHtml = `
+                    <a
+                        class="task-count"
+                        href="/tasks-by-date?deadline=${dateKey}"
+                    >
+                        ${taskCount} Task
+                    </a>
+                `;
+            }
+            else{
+                taskCountHtml = `
+                    <a
+                        class="task-count"
+                        href="/tasks-by-date?deadline=${dateKey}"
+                    >
+                        ${taskCount} Tasks
+                    </a>
+                `;
+            }
+        }
+
+        days +=
+            `
+            <div class="${checkToday} date-num">
+                <div class="num">${i}</div>
+                ${taskCountHtml}
+            </div>`;
+    }
+
+    for (let i = lastDayofMonth; i < 6; i++) {
+        days += `
             <div class="date-num">
                 <div class="num-dim">${i - lastDayofMonth + 1}</div>
             </div>`;
-  }
-  // display all days inside the HTML file
-  datesEl.innerHTML = days;
-  // display current month & year
-  monthYearEl.innerHTML = 
-    `
-        <div class="months-year">${dmObj.months[month]} ${year}</div>
-        <img 
-            class="calendar-icon" 
-            src="./images/calendar/calendar.svg">
-    `;
+    }
+
+    datesEl.innerHTML = days;
+
+    monthYearEl.innerHTML =
+        `
+            <div class="months-year">${dmObj.months[month]} ${year}</div>
+            <img
+                class="calendar-icon"
+                src="./images/calendar/calendar.svg">
+        `;
 };
 
 displayCalendar();
 
-// previous and next month
-btnEl.forEach((btns) => {
-  btns.addEventListener("click", () => {
-    month = btns.id === "prev" ? month - 1 : month + 1;
+btnEl.forEach((btn) => {
+  btn.addEventListener("click", () => {
 
-    if (month < 0 || month > 11) {
-      date = new Date(year, month, new Date().getDate());
-      year = date.getFullYear();
-      month = date.getMonth();
-    } 
-    else {
-      date = new Date();
+    let newMonth = btn.id === "prev" ? month - 1 : month + 1;
+    let newYear = year;
+
+    if (newMonth < 0) {
+      newMonth = 11;
+      newYear--;
     }
 
-    displayCalendar();
+    if (newMonth > 11) {
+      newMonth = 0;
+      newYear++;
+    }
+
+    window.location.href = `/calendar?month=${newMonth + 1}&year=${newYear}`;
   });
 });

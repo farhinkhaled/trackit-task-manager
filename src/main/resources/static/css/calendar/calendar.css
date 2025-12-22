@@ -51,6 +51,25 @@
     top: 10px;
 }
 
+.date-num .task-count{
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgb(68, 68, 207);
+    color: white;
+    padding: 4px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:  opacity 0.15s;
+    text-decoration: none;
+}
+
+.date-num .task-count:hover{
+    opacity: 0.8;
+}
+
 .date-num .num-dim{
     position: absolute;
     right: 10px;
