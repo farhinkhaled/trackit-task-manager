@@ -31,16 +31,17 @@
                             th:class="'priority-icon-'+${task.taskPriority}"
                             src="/images/tasks-by-deadline/priority.svg"
                     >
-                    <div th:class="'priority-text-'+${task.taskStatus}" th:text="${task.taskPriority}">
+                    <div th:class="'priority-text-'+${task.taskPriority}" th:text="${task.taskPriority}">
                     </div>
                 </div>
                 <div class="task-status task-meta-items">
                     <img
-                            class="status-icon-in-progress"
-                            src="/images/tasks-by-deadline/in-progress.svg"
+                            th:class="'status-icon-'+${task.taskStatus}"
+                            th:src="'/images/tasks-by-deadline/'+${task.taskStatus}+'.svg'"
                     >
-                    <div class="status-text-in-progress">
-                        In Progress
+                    <div th:class="'status-text-'+${task.taskStatus}"
+                         th:text="${task.taskStatus}"
+                    >
                     </div>
                 </div>
                 <div class="deadline task-meta-items">

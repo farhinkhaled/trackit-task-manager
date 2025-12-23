@@ -42,6 +42,18 @@
     margin-bottom: 5px;
 }
 
+.due-date-container{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.due-date-container img{
+    height: 18px;
+    margin-right: 8px;
+    filter: invert(24%) sepia(0%) saturate(4536%) hue-rotate(124deg) brightness(96%) contrast(78%);
+}
+
 .due-date{
     font-size: 14px;
     color: rgb(72, 72, 72);

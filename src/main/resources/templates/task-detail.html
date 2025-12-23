@@ -39,8 +39,10 @@
                             <div class="about-task">
                                 Status
                             </div>
-                            <div class="task-status">
-                                In Progress
+                            <div
+                                 th:class="'task-status-'+${task.taskStatus}"
+                                 th:text="${task.taskStatus}"
+                            >
                             </div>
                         </div>
 
@@ -78,57 +80,63 @@
                 </div>
 
                 <div class="subtasks-card">
-                    <div class="header-section">
-                        <div class="subtask-card-heading">
-                            <div class="heading">
-                                <img class="subtasks-icon" src="/images/task-details/subttasks.svg">
-                                <div>Sub Tasks</div>
+                    <div class="subtask-mod">
+                        <div class="header-section">
+                            <div class="subtask-card-heading">
+                                <div class="heading">
+                                    <img class="subtasks-icon" src="/images/task-details/subttasks.svg">
+                                    <div>Sub Tasks</div>
+                                </div>
+                                <button id="addSubTaskBtn" class="add-subtask-button">
+                                    <img
+                                         src="/images/tasks-table/plus-icon.svg"
+                                         class="plus-icon"
+                                    >
+                                    <div class="button-text">Add Subtask</div>
+                                </button>
                             </div>
-                            <button id="addSubTaskBtn" class="add-subtask-button">
-                                + Add Subtask
-                            </button>
-                        </div>
-                        <div class="progress">
-                            <div class="completed-subtask-num">1/4</div>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="subtasks">
-                        <div
-                            class="subtasks-group"
-                            th:each="subTask: ${subTaskPage.content}"
-                        >
-                            <div class="subtask-title-container">
-                                <input class="subtask-checkbox" type="checkbox" id="subtask-1">
-                                <div
-                                   class="subtask-title"
-                                   th:text="${subTask.subTaskTitle}"
-                                >
+                            <div class="progress">
+                                <div class="completed-subtask-num">1/4</div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar"></div>
                                 </div>
                             </div>
-                            <div class="actions">
-                                <a
-                                    class="edit-button"
-                                    th:data-id="${subTask.id}"
-                                    th:data-title="${subTask.subTaskTitle}"
-                                >
-                                    <img
-                                            class="edit-icon"
-                                            src="/images/tasks-table/edit.svg"
+                        </div>
+
+                        <div class="subtasks">
+                            <div
+                                class="subtasks-group"
+                                th:each="subTask: ${subTaskPage.content}"
+                            >
+                                <div class="subtask-title-container">
+                                    <input class="subtask-checkbox" type="checkbox" id="subtask-1">
+                                    <div
+                                       class="subtask-title"
+                                       th:text="${subTask.subTaskTitle}"
                                     >
-                                </a>
-                                <a
-                                    class="delete-button"
-                                    th:data-id="${subTask.id}"
-                                >
-                                    <img
-                                            class="trash-icon"
-                                            src="/images/tasks-table/trash.svg"
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <a
+                                        class="edit-button"
+                                        th:data-id="${subTask.id}"
+                                        th:data-title="${subTask.subTaskTitle}"
                                     >
-                                </a>
+                                        <img
+                                                class="edit-icon"
+                                                src="/images/tasks-table/edit.svg"
+                                        >
+                                    </a>
+                                    <a
+                                        class="delete-button"
+                                        th:data-id="${subTask.id}"
+                                    >
+                                        <img
+                                                class="trash-icon"
+                                                src="/images/tasks-table/trash.svg"
+                                        >
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -148,9 +156,8 @@
                                 th:each="i : ${#numbers.sequence(0, subTaskPage.totalPages - 1)}"
                                 th:disabled="${i == currentPage}"
                                 th:text="${i + 1}"
-                                th:onclick="'window.location.href=\'/task-detail/'+${taskId}+'?page=' + ${i} + '&size=' + ${subTaskPage.size} + '\';'"
+                                th:if="${i >= 0}" th:onclick="'window.location.href=\'/task-detail/'+${taskId}+'?page=' + ${i} + '&size=' + ${subTaskPage.size} + '\';'"
                         >
-                            1
                         </button>
 
                         <button
@@ -172,29 +179,31 @@
                     History
                 </div>
 
-                <div class="all-history">
-                    <div
-                        class="history-group"
-                        th:each="history: ${latestHistories}"
-                    >
-                        <div class="circle-line">
-                            <div class="circle"></div>
-                            <div class="line"></div>
-                        </div>
+                <div class="all-history-container">
+                    <div class="all-history">
                         <div
-                           class="history-title"
-                           th:text="|${history.eventType} ${history.createdOn}|"
+                            class="history-group"
+                            th:each="history, stat: ${latestHistories}"
                         >
+                            <div class="circle-line">
+                                <div class="circle"></div>
+                                <div class="line" th:if="${stat.last == false}"></div>
+                            </div>
+                            <div
+                               class="history-title"
+                               th:text="|${history.eventType} ${history.createdOn}|"
+                            >
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <a
-                    class="view-all-history"
-                    th:href="@{/history/{taskId}(taskId=${taskId})}"
-                >
-                    View All
-                </a>
+                    <a
+                        class="view-all-history"
+                        th:href="@{/history/{taskId}(taskId=${taskId})}"
+                    >
+                        View All
+                    </a>
+                </div>
             </div>
         </div>
 

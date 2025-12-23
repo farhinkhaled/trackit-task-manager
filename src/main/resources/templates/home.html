@@ -65,7 +65,10 @@
                             <div class="task-details">
                                 <div class="task-title" th:text="${task.taskTitle}">
                                 </div>
-                                <div class="due-date" th:text="${task.deadline}">
+                                <div class="due-date-container">
+                                    <img src="/images/calendar/calendar.svg">
+                                    <div class="due-date" th:text="${task.deadline}">
+                                    </div>
                                 </div>
                             </div>
                         </div>

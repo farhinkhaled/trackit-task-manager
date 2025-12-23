@@ -38,22 +38,22 @@
                     >
                     </div>
                 </div>
-<!--                <div class="task-status task-meta-items">-->
-<!--                    <img-->
-<!--                            class="status-icon-in-progress"-->
-<!--                            th:src="'/images/tasks-by-deadline/'+${task.taskStatus}+'.svg'"-->
-<!--                    >-->
-<!--                    <div-->
-<!--                            th:class="'status-text-'+${task.taskStatus}"-->
-<!--                            th:text="${task.taskStatus}"-->
-<!--                    >-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="deadline task-meta-items">
-                    <img class="calendar-icon" src="/images/calendar/calendar.svg">
-                    <div th:text="${#temporals.format(task.deadline, 'dd MMM yyyy')}">
+                <div class="task-status task-meta-items">
+                    <img
+                            th:class="'status-icon-'+${task.taskStatus}"
+                            th:src="'/images/tasks-by-deadline/'+${task.taskStatus}+'.svg'"
+                    >
+                    <div
+                            th:class="'status-text-'+${task.taskStatus}"
+                            th:text="${task.taskStatus}"
+                    >
                     </div>
                 </div>
+<!--                <div class="deadline task-meta-items">-->
+<!--                    <img class="calendar-icon" src="/images/calendar/calendar.svg">-->
+<!--                    <div th:text="${#temporals.format(task.deadline, 'dd MMM yyyy')}">-->
+<!--                    </div>-->
+<!--                </div>-->
                 <a class="about-task" th:href="@{/task-detail/{taskId}(taskId=${task.id})}">
                     <img
                             class="about-task-icon"
@@ -61,7 +61,7 @@
                 </a>
             </div>
         </div>
-        
+
         <script src="/js/sidebar.js"></script>
     </body>
 </html>

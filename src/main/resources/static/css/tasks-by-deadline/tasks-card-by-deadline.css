@@ -69,7 +69,7 @@
     filter: invert(40%) sepia(67%) saturate(873%) hue-rotate(321deg) brightness(93%) contrast(93%);
 }
 
-.status-icon-complete{
+.status-icon-completed{
     height: 16px;
     margin-right: 5px;
     filter: invert(47%) sepia(56%) saturate(430%) hue-rotate(95deg) brightness(101%) contrast(94%);
@@ -81,26 +81,32 @@
 }
 
 .priority-text-high{
+    text-transform: uppercase;
     color: rgb(227, 74, 74);
 }
 
 .priority-text-medium{
+    text-transform: uppercase;
     color: rgb(246, 155, 9);
 }
 
 .priority-text-low{
+    text-transform: uppercase;
     color: rgb(56, 161, 105);
 }
 
 .status-text-in-progress{
+    text-transform: uppercase;
     color: rgb(54, 54, 207);
 }
 
 .status-text-overdue{
+    text-transform: uppercase;
     color: rgb(227, 74, 74);
 }
 
-.status-text-complete{
+.status-text-completed{
+    text-transform: uppercase;
     color: rgb(56, 161, 105);
 }
 

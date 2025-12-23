@@ -1,9 +1,12 @@
 .subtasks-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: white;
     border: 1px solid gainsboro;
     border-radius: 10px;
-    /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
     padding: 20px;
+    height: 350px;
 }
 
 .subtasks-card .header-section{
@@ -117,7 +120,9 @@
 }
 
 .add-subtask-button{
-    padding: 10px 6px;
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
     background-color: rgb(44, 124, 209);
     color: white;
     border: none;
@@ -129,4 +134,17 @@
 
 .add-subtask-button:hover{
     opacity: 0.8;
+}
+
+.add-subtask-button:hover{
+    opacity: 0.8;
+}
+
+.plus-icon{
+    margin-right: 4px;
+    height: 16px;
+}
+
+.button-text{
+    font-size: 14px;
 }

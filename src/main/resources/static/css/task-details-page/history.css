@@ -19,6 +19,12 @@
     padding: 20px;
 }
 
+.all-history-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .all-history{
     display: flex;
     flex-direction: column;

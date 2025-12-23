@@ -44,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void saveTask(TaskDto taskDto) {
         Task task = mapToTask(taskDto);
-        task.setTaskStatus("IN_PROGRESS");
+        task.setTaskStatus(TaskStatus.IN_PROGRESS);
 
         TaskHistory taskHistory = TaskHistory.builder()
                 .eventType("New Task " +task.getTaskTitle()+ " was created on ")
@@ -71,6 +71,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void updateTask(TaskDto taskDto) {
         Task task = mapToTask(taskDto);
+        task.setTaskStatus(task.getTaskStatus());
         taskRepository.save(task);
     }
 
@@ -102,7 +103,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void markTaskAsComplete(Long taskId) {
         Task task = taskRepository.findById(taskId).get();
-        task.setTaskStatus("COMPLETED");
+        task.setTaskStatus(TaskStatus.COMPLETED);
         taskRepository.save(task);
     }
 

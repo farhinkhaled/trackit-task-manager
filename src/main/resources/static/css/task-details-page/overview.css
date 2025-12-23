@@ -45,15 +45,35 @@
     color: rgb(72, 72, 72);
 }
 
-.task-status,
 .deadline,
 .updated{
     font-size: 14px;
 }
 
-.task-status{
+.task-status-in-progress,
+.task-status-overdue,
+.task-status-completed{
+    text-transform: uppercase;
+}
+
+.task-status-in-progress{
+    font-size: 14px;
     font-weight: 500;
     color: rgb(19, 120, 208);
+    margin-left: 60px;
+}
+
+.task-status-overdue{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(244, 71, 18);
+    margin-left: 60px;
+}
+
+.task-status-completed{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(18, 176, 102);
     margin-left: 60px;
 }
 
@@ -74,4 +94,22 @@
     font-size: 14px;
     line-height: 25px;
     width: 520px;
+}
+
+.mark-complete-button{
+    margin-top: 25px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(52, 193, 120);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.mark-complete-button:hover{
+    opacity: 0.8;
 }

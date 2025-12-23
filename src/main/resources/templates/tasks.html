@@ -127,7 +127,7 @@
                             <form th:action="@{/task/complete}" method="post">
                                 <input type="hidden" name="taskId" th:value="${task.id}" />
                                 <input class="style-checkbox" type="checkbox"
-                                       th:checked="${task.taskStatus == 'COMPLETED'}"
+                                       th:checked="${task.taskStatus == 'completed'}"
                                        th:attr="onclick='this.disabled=true; this.form.submit()'" />
                             </form>
                         </td>
@@ -139,9 +139,13 @@
                         </td>
                         <td class="pending">
                             <img 
-                                class="pending-task-image"
+                                th:class="${task.taskStatus}+'-task-image'"
+                                th:src="'/images/tasks-by-deadline/'+${task.taskStatus}+'.svg'"
                             >
-                            <span th:text="${task.taskStatus}">
+                            <span
+                                th:text="${task.taskStatus}"
+                                th:class="'status-text-'+${task.taskStatus}"
+                            >
                             </span>
                         </td>
                         <td>

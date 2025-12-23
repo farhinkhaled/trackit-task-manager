@@ -1,5 +1,6 @@
 package com.irithir.service.impl;
 
+import com.irithir.constant.TaskStatus;
 import com.irithir.dto.TaskDto;
 import com.irithir.model.Task;
 import com.irithir.model.TaskNotification;
@@ -21,13 +22,13 @@ public class TaskNotificationServiceImpl implements TaskNotificationService {
     @Override
     public List<TaskNotification> findAllNotifications() {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
-        String status = "IN_PROGRESS";
+        String status = TaskStatus.IN_PROGRESS;
         List<Task> dueTomorrowTasks = taskRepository.findDueTomorrowTasks(tomorrow, status);
 
         return dueTomorrowTasks.stream()
                 .map(task -> TaskNotification.builder()
                         .taskId(task.getId())
-                        .notificationMessage(task.getTaskTitle() + " is due tomorrow.")
+                        .notificationMessage("\"" + task.getTaskTitle() + "\" is due tomorrow.")
                         .build())
                 .toList();
     }

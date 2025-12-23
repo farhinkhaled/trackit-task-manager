@@ -34,14 +34,28 @@
 }
 
 .sidebar-icons{
-    height: 20px;
-    margin-left: 20px;
-    margin-right: 12px;
+    height: 22px;
+    margin-left: 22px;
+    margin-right: 16px;
+    filter: invert(0%) sepia(7%) saturate(29%) hue-rotate(335deg) brightness(93%) contrast(107%);
+}
+
+.notification-icon{
+    height: 24px;
+    margin-right: 14px;
 }
 
 .sidebar-options{
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.15s;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-options:hover{
+    color: rgb(77, 130, 223);
 }
 
 .mod-user-info{

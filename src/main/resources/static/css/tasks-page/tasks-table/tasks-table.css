@@ -39,14 +39,40 @@ td{
     text-decoration: underline;
 }
 
-.pending-task-image,
-.loading-task-image{
+.in-progress-task-image{
     height: 20px;
     margin-right: 5px;
+    filter: invert(15%) sepia(62%) saturate(5445%) hue-rotate(239deg) brightness(95%) contrast(84%);
 }
 
-.done-task-image{
-    height: 25px;
+.overdue-task-image{
+    height: 22px;
+    margin-right: 5px;
+    filter: invert(40%) sepia(67%) saturate(873%) hue-rotate(321deg) brightness(93%) contrast(93%);
+}
+
+.completed-task-image{
+    height: 18px;
+    margin-right: 5px;
+    filter: invert(47%) sepia(56%) saturate(430%) hue-rotate(95deg) brightness(101%) contrast(94%);
+}
+
+.status-text-in-progress,
+.status-text-overdue,
+.status-text-completed{
+    text-transform: uppercase;
+}
+
+.status-text-in-progress{
+    color: rgb(54, 54, 207);
+}
+
+.status-text-overdue{
+    color: rgb(227, 74, 74);
+}
+
+.status-text-completed{
+    color: rgb(56, 161, 105);
 }
 
 .pending,
@@ -103,6 +129,5 @@ td{
 .delete-button:hover{
     text-decoration: underline;
 }
-
 
 

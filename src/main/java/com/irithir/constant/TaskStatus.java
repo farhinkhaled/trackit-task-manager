@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 public class TaskStatus {
-    public static final String IN_PROGRESS = "IN_PROGRESS";
-    public static final String COMPLETED = "COMPLETED";
-    public static final String OVERDUE = "OVERDUE";
+    public static final String IN_PROGRESS = "in-progress";
+    public static final String COMPLETED = "completed";
+    public static final String OVERDUE = "overdue";
 }

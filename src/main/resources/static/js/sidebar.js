@@ -1,4 +1,11 @@
-document.querySelector('.sidebar').innerHTML = 
+const ROUTES = {
+    home: "/home",
+    tasks: "/task-page",
+    calendar: "/calendar",
+    notifications: "/notifications"
+};
+
+document.querySelector('.sidebar').innerHTML =
 `
     <div>
         <div class="logo-section">
@@ -10,33 +17,20 @@ document.querySelector('.sidebar').innerHTML =
         <div class="navs-section">
             <div class="sidebar-navs">
                 <img class="sidebar-icons" src="../images/sidebar/home.svg">
-                <span class="sidebar-options">Home</span>
+                <a class="sidebar-options" href="${ROUTES.home}">Home</a>
             </div>
             <div class="sidebar-navs">
                 <img class="sidebar-icons" src="../images/sidebar/tasks.svg">
-                <span class="sidebar-options">Tasks</span>
+                <a class="sidebar-options" href="${ROUTES.tasks}">Tasks</a>
             </div>
             <div class="sidebar-navs">
                 <img class="sidebar-icons" src="../images/sidebar/calendar.svg">
-                <span class="sidebar-options">Calendar</span>
+                <a class="sidebar-options" href="${ROUTES.calendar}">Calendar</a>
             </div>
             <div class="sidebar-navs">
-                <img class="sidebar-icons" src="../images/sidebar/notification.svg">
-                <span class="sidebar-options">Notifications</span>
+                <img class="sidebar-icons notification-icon" src="../images/sidebar/notification.svg">
+                <a class="sidebar-options" href="${ROUTES.notifications}">Notifications</a>
             </div>
-        </div>
-    </div>
-    <div class="mod-user-info">
-        <div class="user-navs">
-            <img 
-                src="../images/sidebar/profile.jpg"
-                class="profile-picture"
-            >
-            <span class="sidebar-options">Farhin Khaled</span>
-            <img
-                src="../images/sidebar/three-dots.png"
-                class="three-dots-icon"
-            >
         </div>
     </div>
 `

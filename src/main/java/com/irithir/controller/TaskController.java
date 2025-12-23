@@ -39,9 +39,9 @@ public class TaskController {
         Task task = new Task();
 
         long totalTasks = tasks.size();
-        long inProgressTasks = taskService.countTasksByStatus("IN_PROGRESS");
-        long overdueTasks = taskService.countTasksByStatus("OVERDUE");
-        long completedTasks = taskService.countTasksByStatus("COMPLETED");
+        long inProgressTasks = taskService.countTasksByStatus("in-progress");
+        long overdueTasks = taskService.countTasksByStatus("overdue");
+        long completedTasks = taskService.countTasksByStatus("completed");
 
         modelAndView.addObject("tasks", tasks);
         modelAndView.addObject("task", task);
@@ -103,6 +103,7 @@ public class TaskController {
         Page<SubTask> subTaskPage = subTaskService.getSubTasks(taskId, page, size);
         List<TaskHistory> latestHistories = taskHistoryService.findLatestHistories(taskId);
 
+        modelAndView.addObject("noSubTask", subTasks.isEmpty());
         modelAndView.addObject("task", taskDto);
         modelAndView.addObject("taskId", taskId);
         modelAndView.addObject("subTask", subTask);
@@ -143,9 +144,9 @@ public class TaskController {
         List<TaskDto> upcomingTasks = taskService.upcomingTasks();
 
         long totalTasks = taskService.findAllTasks().size();
-        long inProgressTasks = taskService.countTasksByStatus("IN_PROGRESS");
-        long overdueTasks = taskService.countTasksByStatus("OVERDUE");
-        long completedTasks = taskService.countTasksByStatus("COMPLETED");
+        long inProgressTasks = taskService.countTasksByStatus("in-progress");
+        long overdueTasks = taskService.countTasksByStatus("overdue");
+        long completedTasks = taskService.countTasksByStatus("completed");
 
         modelAndView.addObject("upcomingTasks", upcomingTasks);
         modelAndView.addObject("totalTasks", totalTasks);
