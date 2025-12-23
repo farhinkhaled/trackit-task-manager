@@ -29,23 +29,26 @@
             <div class="stats-container">
                 <div class="stats-card">
                     <div class="task-status">In Progress</div>
-                    <img
-                        class="dashboard-analytics"
-                        src="/images/dashboard-analytics/doughnut-chart.svg">
+                    <div class="chart-container" >
+                        <canvas id="progressChart" class="progress-chart">
+                        </canvas>
+                    </div>
                 </div>
 
                 <div class="stats-card">
                     <div class="task-status">Overdue</div>
-                    <img 
-                        class="dashboard-analytics" 
-                        src="/images/dashboard-analytics/doughnut-chart.svg">
+                    <div class="chart-container" >
+                        <canvas id="overdueChart" class="progress-chart">
+                        </canvas>
+                    </div>
                 </div>
 
                 <div class="stats-card">
                     <div class="task-status">Completed</div>
-                    <img 
-                        class="dashboard-analytics" 
-                        src="/images/dashboard-analytics/doughnut-chart.svg">
+                    <div class="chart-container" >
+                        <canvas id="completedChart" class="progress-chart">
+                        </canvas>
+                    </div>
                 </div>
             </div>
 
@@ -79,6 +82,15 @@
         </div>
 
         <script src="/js/sidebar.js"></script>
-        <script src="/js/sort-by-priority-btn.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script th:inline="javascript">
+            const taskStats = {
+                total: [[${totalTasks}]],
+                inProgress: [[${inProgressTasks}]],
+                overdue: [[${overdueTasks}]],
+                completed: [[${completedTasks}]]
+            };
+        </script>
+        <script src="/js/chart.js"></script>
     </body>
 </html>

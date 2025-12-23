@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -91,6 +92,7 @@ public class TaskServiceImpl implements TaskService {
 
         List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate)
                                     .stream()
+                                    .sorted(Comparator.comparing(Task::getDeadline))
                                     .limit(5)
                                     .collect(Collectors.toList());
 

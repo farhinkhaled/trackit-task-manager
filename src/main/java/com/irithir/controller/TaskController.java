@@ -148,6 +148,7 @@ public class TaskController {
         long completedTasks = taskService.countTasksByStatus("COMPLETED");
 
         modelAndView.addObject("upcomingTasks", upcomingTasks);
+        modelAndView.addObject("totalTasks", totalTasks);
         modelAndView.addObject("inProgressTasks", inProgressTasks);
         modelAndView.addObject("overdueTasks", overdueTasks);
         modelAndView.addObject("completedTasks", completedTasks);
@@ -172,6 +173,6 @@ public class TaskController {
                                      ModelAndView modelAndView) {
         taskService.markTaskAsComplete(taskId);
         modelAndView.setViewName("redirect:/task-page");
-        return modelAndView; // back to your task page
+        return modelAndView;
     }
 }

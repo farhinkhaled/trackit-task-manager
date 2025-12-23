@@ -14,6 +14,10 @@
     /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
 }
 
+.progress-chart{
+    height: 100px;
+}
+
 .dashboard-analytics{
     height: 100px;
     filter: invert(49%) sepia(84%) saturate(360%) hue-rotate(169deg) brightness(89%) contrast(93%);
