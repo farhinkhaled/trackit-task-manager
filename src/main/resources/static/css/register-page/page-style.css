@@ -7,11 +7,11 @@ body{
 
 .container{
     display: grid;
-    grid-template-columns: 550px 1fr;
+    grid-template-columns: 750px 1fr;
 }
 
 .app-demo-img{
-    height: 650px;
-    width: 550px;
+    height: 600px;
+    width: 750px;
     position: fixed;
 }

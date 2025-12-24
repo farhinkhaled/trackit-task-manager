@@ -43,7 +43,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDto> findAllTasks() {
-        List<Task> tasks = taskRepository.findAll();
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
+        List<Task> tasks = taskRepository.findByCreatedBy(user);
+
         return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
     }
 
@@ -51,8 +55,6 @@ public class TaskServiceImpl implements TaskService {
     public void saveTask(TaskDto taskDto) {
         String username = SecurityUtil.getSessionUser();
         UserEntity user = userRepository.findByUsername(username);
-
-        System.out.println(username);
 
         Task task = mapToTask(taskDto);
         task.setTaskStatus(TaskStatus.IN_PROGRESS);
@@ -70,8 +72,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Page<Task> getTasks(int page, int size) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
         Pageable pageable = PageRequest.of(page, size);
-        return taskRepository.findAll(pageable);
+        return taskRepository.findByCreatedBy(user, pageable);
     }
 
     @Override
@@ -106,18 +111,21 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.deleteById(taskId);
     }
 
-    @Override
-    public List<TaskDto> searchTasks(String query) {
-        List<Task> tasks = taskRepository.searchTasks(query);
-        return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
-    }
+//    @Override
+//    public List<TaskDto> searchTasks(String query) {
+//        List<Task> tasks = taskRepository.searchTasks(query);
+//        return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
+//    }
 
     @Override
     public List<TaskDto> upcomingTasks() {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
         LocalDate startDate = LocalDate.now().plusDays(1);
         LocalDate endDate = LocalDate.now().plusDays(10);
 
-        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate)
+        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate, user)
                                     .stream()
                                     .sorted(Comparator.comparing(Task::getDeadline))
                                     .limit(5)
@@ -135,20 +143,36 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public long countTasksByStatus(String status) {
-        return taskRepository.countByTaskStatus(status);
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
+        return taskRepository.countByCreatedByAndTaskStatus(user, status);
     }
 
     @Override
     public List<TaskDto> allUpcomingTasks() {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
         LocalDate startDate = LocalDate.now().plusDays(1);
         LocalDate endDate = LocalDate.now().plusDays(10);
 
-        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate);
+        List<Task> upcomingTasks = taskRepository.findUpcomingTasks(startDate, endDate, user);
 
         return upcomingTasks.stream().map((upcomingTask) -> mapToTaskDto(upcomingTask)).collect(Collectors.toList());
     }
 
-    @Scheduled(cron = "0 5 0 * * ?")
+    @Override
+    public List<TaskDto> findTasksByDeadline(LocalDate deadline) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
+        List<Task> tasks = taskRepository.findByDeadlineAndCreatedBy(deadline, user);
+
+        return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
     @Transactional
     public void updateOverdueTasks() {
         List<String> activeStatuses = List.of(

@@ -1,7 +1,10 @@
 package com.irithir.controller;
 
+import com.irithir.model.UserEntity;
 import com.irithir.repository.TaskRepository;
+import com.irithir.repository.UserRepository;
 import com.irithir.repository.projection.TaskDeadlineCount;
+import com.irithir.security.SecurityUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,9 +18,12 @@ import java.util.Map;
 @Controller
 public class CalendarController {
     private TaskRepository taskRepository;
+    private UserRepository userRepository;
 
-    public CalendarController(TaskRepository taskRepository) {
+    public CalendarController(TaskRepository taskRepository,
+                              UserRepository userRepository) {
         this.taskRepository = taskRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/calendar")
@@ -32,7 +38,10 @@ public class CalendarController {
         LocalDate startDate = LocalDate.of(selectedYear, selectedMonth, 1);
         LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
 
-        List<TaskDeadlineCount> counts = taskRepository.countTasksByDeadlineBetween(startDate, endDate);
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
+        List<TaskDeadlineCount> counts = taskRepository.countTasksByDeadlineBetween(startDate, endDate, user);
 
         Map<String, Long> deadlineCountMap = new HashMap<>();
 

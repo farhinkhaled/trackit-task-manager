@@ -1,16 +1,17 @@
 package com.irithir.repository;
 
-import com.irithir.constant.TaskStatus;
 import com.irithir.model.Task;
+import com.irithir.model.UserEntity;
 import com.irithir.repository.projection.TaskDeadlineCount;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
@@ -20,13 +21,13 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("""
         SELECT t.deadline AS deadline, COUNT(t) AS count
         FROM Task t
-        WHERE t.deadline BETWEEN :startDate AND :endDate
+        WHERE t.deadline BETWEEN :startDate AND :endDate AND t.createdBy = :user
         GROUP BY t.deadline
     """)
     List<TaskDeadlineCount> countTasksByDeadlineBetween(
             @Param("startDate") LocalDate startDate,
-            @Param("endDate") LocalDate endDate
-    );
+            @Param("endDate") LocalDate endDate,
+            @Param("user") UserEntity user);
 
     List<Task> findByDeadline(LocalDate deadline);
 
@@ -42,13 +43,19 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
                            @Param("activeStatuses") List<String> activeStatuses,
                            @Param("today") LocalDate today);
 
-    @Query("SELECT t FROM Task t WHERE t.deadline = :tomorrow AND t.taskStatus = :status")
+    @Query("SELECT t FROM Task t WHERE t.deadline = :tomorrow AND t.taskStatus = :status AND t.createdBy = :user")
     List<Task> findDueTomorrowTasks(@Param("tomorrow") LocalDate tomorrow,
-                                    @Param("status") String status);
+                                    @Param("status") String status,
+                                    @Param("user") UserEntity user);
 
-    @Query("SELECT t FROM Task t WHERE t.deadline BETWEEN :startDate AND :endDate")
-    List<Task> findUpcomingTasks(LocalDate startDate, LocalDate endDate);
+    @Query("SELECT t FROM Task t WHERE t.deadline BETWEEN :startDate AND :endDate AND t.createdBy = :user")
+    List<Task> findUpcomingTasks(LocalDate startDate,
+                                       LocalDate endDate,
+                                       UserEntity user);
 
-    @Query("SELECT COUNT(t) FROM Task t WHERE t.taskStatus = :status")
-    long countByTaskStatus(@Param("status") String status);
+    List<Task> findByCreatedBy(UserEntity user);
+    Page<Task> findByCreatedBy(UserEntity user, Pageable pageable);
+
+    long countByCreatedByAndTaskStatus(UserEntity user, String status);
+    List<Task> findByDeadlineAndCreatedBy(LocalDate deadline, UserEntity user);
 }
