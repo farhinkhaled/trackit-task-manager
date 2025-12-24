@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Registration</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="/css/register-page/page-style.css">
+        <link rel="stylesheet" href="/css/register-page/register-form.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="img-container">
+                <img class="app-demo-img" src="/images/register/app-demo.png">
+            </div>
+            <div class="form-style">
+                <div th:if="${param.fail}" class="error-message-pop">
+                    Username or email already exists!
+                </div>
+
+                <div class="register-heading">
+                    <div class="heading">Register</div>
+                    <div class="heading-message">Create your account to start organizing your tasks.</div>
+                </div>
+                <div class="register-form-container">
+                    <form class="register-form"
+                          method="post"
+                          th:object="${user}"
+                          th:action="@{/register/save}"
+                    >
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                th:field="*{username}"
+                            >
+                            <p th:if="${#fields.hasErrors('username')}"
+                               th:errors="*{username}"
+                               class="error-message">
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                                 type="text"
+                                 id="email"
+                                 name="email"
+                                 th:field="*{email}"
+                            >
+                            <p th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}"
+                               class="error-message">
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input
+                                  type="password"
+                                  id="password"
+                                  name="password"
+                                  th:field="*{password}"
+                            >
+                            <p th:if="${#fields.hasErrors('password')}"
+                               th:errors="*{password}"
+                               class="error-message">
+                            </p>
+                        </div>
+
+                        <button
+                                class="register-button"
+                                type="submit"
+                        >
+                            Register
+                        </button>
+                    </form>
+                </div>
+                <div class="login">
+                    <div>Already have an account?</div>
+                    <a class="login-anchor" th:href="@{/login}">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

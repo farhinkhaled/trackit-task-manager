@@ -18,6 +18,7 @@ public class TaskMapper {
                 .taskDescription(taskDto.getTaskDescription())
                 .createdOn(taskDto.getCreatedOn())
                 .updatedOn(taskDto.getUpdatedOn())
+                .createdBy(taskDto.getCreatedBy())
                 .build();
 
         return task;
@@ -34,6 +35,7 @@ public class TaskMapper {
                 .createdOn(task.getCreatedOn())
                 .updatedOn(task.getUpdatedOn())
                 .subTasks(task.getSubTasks().stream().map((subTask) -> mapToSubTaskDto(subTask)).collect(Collectors.toList()))
+                .createdBy(task.getCreatedBy())
                 .build();
 
         return taskDto;

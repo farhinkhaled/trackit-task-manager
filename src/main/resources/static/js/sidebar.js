@@ -5,6 +5,8 @@ const ROUTES = {
     notifications: "/notifications"
 };
 
+const logoutURL = "/logout"
+
 document.querySelector('.sidebar').innerHTML =
 `
     <div>
@@ -31,6 +33,14 @@ document.querySelector('.sidebar').innerHTML =
                 <img class="sidebar-icons notification-icon" src="../images/sidebar/notification.svg">
                 <a class="sidebar-options" href="${ROUTES.notifications}">Notifications</a>
             </div>
+        </div>
+
+        <div class="logout-section">
+            <img
+                src="../images/sidebar/logout.svg"
+                class="sidebar-icons"
+            >
+            <a class="sidebar-options" href="${logoutURL}">Logout</a>
         </div>
     </div>
 `

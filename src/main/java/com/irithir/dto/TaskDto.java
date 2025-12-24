@@ -1,5 +1,6 @@
 package com.irithir.dto;
 
+import com.irithir.model.UserEntity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,16 +24,13 @@ import java.util.List;
 @AllArgsConstructor
 public class TaskDto {
     private Long id;
-    @NotEmpty(message = "Title should not be empty")
-    @Size(max = 30, message = "Title cannot exceed 30 characters")
     private String taskTitle;
     private String taskPriority;
     private String taskStatus;
-    @NotNull(message = "Deadline  should not be empty")
     private LocalDate deadline;
-    @NotEmpty(message = "Description  should not be empty")
     private String taskDescription;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private List<SubTaskDto> subTasks;
+    private UserEntity createdBy;
 }

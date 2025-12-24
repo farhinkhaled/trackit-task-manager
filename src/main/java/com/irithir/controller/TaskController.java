@@ -103,7 +103,6 @@ public class TaskController {
         Page<SubTask> subTaskPage = subTaskService.getSubTasks(taskId, page, size);
         List<TaskHistory> latestHistories = taskHistoryService.findLatestHistories(taskId);
 
-        modelAndView.addObject("noSubTask", subTasks.isEmpty());
         modelAndView.addObject("task", taskDto);
         modelAndView.addObject("taskId", taskId);
         modelAndView.addObject("subTask", subTask);

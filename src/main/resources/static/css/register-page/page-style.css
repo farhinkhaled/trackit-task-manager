@@ -1,0 +1,17 @@
+body{
+    font-family: Roboto, Arial;
+    font-style: normal;
+    margin: 0;
+    /* background: rgba(0, 0, 0, 0.05); */
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 550px 1fr;
+}
+
+.app-demo-img{
+    height: 650px;
+    width: 550px;
+    position: fixed;
+}

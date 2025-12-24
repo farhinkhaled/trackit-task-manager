@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Login</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="/css/register-page/page-style.css">
+        <link rel="stylesheet" href="/css/register-page/register-form.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="img-container">
+                <img class="app-demo-img" src="/images/register/app-demo.png">
+            </div>
+            <div class="form-style">
+                <div th:if="${param.error}" class="error-message-pop">
+<!--                    Invalid username or password-->
+                </div>
+                <div th:if="${param.logout}" class="logout-message">
+                    You have been logged out
+                </div>
+
+                <div class="register-heading">
+                    <div class="heading">Login</div>
+                    <div class="heading-message">
+                        Welcome back! Let’s stay organized.
+                    </div>
+                </div>
+                <div class="register-form-container">
+                    <form class="register-form" th:action="@{/login}" method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input
+                                 type="password"
+                                 id="password"
+                                 name="password"
+                            >
+                        </div>
+
+                        <button
+                                class="register-button"
+                                type="submit"
+                                value="Log in"
+                        >
+                            Log in
+                        </button>
+                    </form>
+                </div>
+
+                <div class="login">
+                    <div>Don't have an acoount?</div>
+                    <a class="login-anchor" th:href="@{/register}">
+                        Register here
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

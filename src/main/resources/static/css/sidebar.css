@@ -5,7 +5,6 @@
     bottom: 0;
     display: flex;
     flex-direction: column;
-    align-items: start;
     justify-content: space-between;
     width: 248px;
     background-color: gainsboro;
@@ -13,6 +12,8 @@
     border-right-width: 1px;
     border-right-color: gainsboro;
     z-index: 20;
+    /* padding-left: 8px;
+    padding-right: 8px; */
 }
 
 .logo-section{
@@ -24,7 +25,7 @@
 .logo{
     height: 28px;
     width: 110px;
-    margin-left: 20px;
+    margin-left: 18px;
 }
 
 .sidebar-navs{
@@ -35,7 +36,7 @@
 
 .sidebar-icons{
     height: 22px;
-    margin-left: 22px;
+    margin-left: 18px;
     margin-right: 16px;
     filter: invert(0%) sepia(7%) saturate(29%) hue-rotate(335deg) brightness(93%) contrast(107%);
 }
@@ -46,20 +47,23 @@
 }
 
 .sidebar-options{
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
-    cursor: pointer;
-    transition: color 0.15s;
     text-decoration: none;
     color: black;
+    cursor: pointer;
+    transition: color 0.15s;
 }
 
 .sidebar-options:hover{
     color: rgb(77, 130, 223);
 }
 
-.mod-user-info{
-    margin-bottom: 20px;
+.logout-section{
+   padding-left: 6px;
+   margin-top: 248px;
+   display: flex;
+   align-items: center;
 }
 
 .profile-picture{
@@ -69,17 +73,6 @@
     margin-right: 12px;
     border: none;
     border-radius: 25px;
-}
-
-.user-navs{
-    display: flex;
-    align-items: center;
-}
-
-.three-dots-icon{
-    height: 20px;
-    margin-left: 25px;
-    margin-right: 10px;
 }
 
 

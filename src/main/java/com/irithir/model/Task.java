@@ -41,4 +41,8 @@ public class Task {
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.REMOVE)
     private List<TaskHistory> histories = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private UserEntity createdBy;
 }

@@ -4,8 +4,11 @@ import com.irithir.constant.TaskStatus;
 import com.irithir.dto.TaskDto;
 import com.irithir.model.Task;
 import com.irithir.model.TaskHistory;
+import com.irithir.model.UserEntity;
 import com.irithir.repository.TaskHistoryRepository;
 import com.irithir.repository.TaskRepository;
+import com.irithir.repository.UserRepository;
+import com.irithir.security.SecurityUtil;
 import com.irithir.service.TaskService;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -28,11 +31,14 @@ import static com.irithir.mapper.TaskMapper.mapToTaskDto;
 public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
     private TaskHistoryRepository taskHistoryRepository;
+    private UserRepository userRepository;
 
     public TaskServiceImpl(TaskRepository taskRepository,
-                           TaskHistoryRepository taskHistoryRepository){
+                           TaskHistoryRepository taskHistoryRepository,
+                           UserRepository userRepository){
         this.taskRepository = taskRepository;
         this.taskHistoryRepository = taskHistoryRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -43,8 +49,14 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void saveTask(TaskDto taskDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
+        System.out.println(username);
+
         Task task = mapToTask(taskDto);
         task.setTaskStatus(TaskStatus.IN_PROGRESS);
+        task.setCreatedBy(user);
 
         TaskHistory taskHistory = TaskHistory.builder()
                 .eventType("New Task " +task.getTaskTitle()+ " was created on ")
@@ -70,8 +82,22 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void updateTask(TaskDto taskDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+
         Task task = mapToTask(taskDto);
-        task.setTaskStatus(task.getTaskStatus());
+
+        LocalDate today = LocalDate.now();
+
+        if(today.isAfter(task.getDeadline())){
+            task.setTaskStatus(TaskStatus.OVERDUE);
+        }
+        else{
+            task.setTaskStatus(TaskStatus.IN_PROGRESS);
+        }
+
+        task.setCreatedBy(user);
+
         taskRepository.save(task);
     }
 
