@@ -2,6 +2,8 @@
 
 **TrackIT** is a full-stack web application using a layered architecture that emphasizes security, scalability, and maintainability. The backend is developed with **Spring Boot (MVC)** to ensure a clear separation of concerns across controllers, services, and repositories. **Spring Security** handles user authentication and authorization, ensuring that tasks and data remain private to each user. **Thymeleaf** is used as a server-side template engine to dynamically render HTML views and seamlessly integrate backend data into the frontend. The application uses **PostgreSQL** as a reliable relational database to persist users, tasks, notifications, and task history.
 
+<br>
+
 ## Features
 
 ### Task Management
