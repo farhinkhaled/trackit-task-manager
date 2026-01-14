@@ -172,7 +172,7 @@ public class TaskServiceImpl implements TaskService {
         return tasks.stream().map((task) -> mapToTaskDto(task)).collect(Collectors.toList());
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 5 0 * * ?")
     @Transactional
     public void updateOverdueTasks() {
         List<String> activeStatuses = List.of(
