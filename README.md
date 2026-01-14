@@ -109,5 +109,5 @@
     
 -  Search and filter tasks by name, status and priority
 
-- Progression bar for completed subtasks
+- Progress bar for completed subtasks
     
