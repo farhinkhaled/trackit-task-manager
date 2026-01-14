@@ -95,6 +95,10 @@
 ### Tasks
 ![Tasks](screenshots/tasks.png)
 
+### Task Details
+![Task Details](screenshots/task-details-1.png)
+![Task Details](screenshots/task-details-2.png)
+
 ### Calendar
 ![Calendar](screenshots/calendar.png)
 
