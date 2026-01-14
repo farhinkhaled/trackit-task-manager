@@ -105,9 +105,11 @@
 
 ## Future Enhancements
 
--  Send email notifications when a task deadline is near
+-  Send email notifications when a task deadline is near.
     
--  Search and filter tasks by name, status and priority
+-  Search and filter tasks by name, status and priority.
 
-- Progress bar for completed subtasks
+- Progress bar for completed subtasks.
+  
+- Mobile-responsive design for accessibility across devices.
     
