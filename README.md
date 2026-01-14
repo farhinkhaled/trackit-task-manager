@@ -100,7 +100,8 @@
 ![Task Details](screenshots/task-details-2.png)
 
 ### Calendar
-![Calendar](screenshots/calendar.png)
+![Calendar](screenshots/calendar-1.png)
+![Calendar](screenshots/calendar-2.png)
 
 ### Notifications
 ![Notifications](screenshots/notifications.png)
